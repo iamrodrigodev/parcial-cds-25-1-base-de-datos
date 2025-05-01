@@ -122,15 +122,16 @@ CREATE TABLE IF NOT EXISTS Categorias (
 -- Líneas
 CREATE TABLE IF NOT EXISTS Lineas (
     cod_linea INT AUTO_INCREMENT PRIMARY KEY,
+    ruc CHAR(11),
     nombre_linea VARCHAR(100) UNIQUE NOT NULL,
     fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    FOREIGN KEY (ruc) REFERENCES Proveedores(ruc) ON UPDATE CASCADE,
 );
 
 -- Productos
 CREATE TABLE IF NOT EXISTS Productos (
     cod_producto INT AUTO_INCREMENT PRIMARY KEY,
     cod_categoria INT,
-    ruc CHAR(11),
     cod_linea INT,
     nombre VARCHAR(100) UNIQUE NOT NULL,
     descripcion TEXT,
@@ -140,7 +141,6 @@ CREATE TABLE IF NOT EXISTS Productos (
     estado ENUM('disponible', 'agotado') NOT NULL DEFAULT 'disponible',
     fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (cod_categoria) REFERENCES Categorias(cod_categoria) ON UPDATE CASCADE,
-    FOREIGN KEY (ruc) REFERENCES Proveedores(ruc) ON UPDATE CASCADE,
     FOREIGN KEY (cod_linea) REFERENCES Lineas(cod_linea) ON UPDATE CASCADE
 );
 
