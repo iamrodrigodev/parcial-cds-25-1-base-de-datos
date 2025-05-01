@@ -50,8 +50,7 @@ CREATE TABLE IF NOT EXISTS Vendedores (
     cod_empleado INT NOT NULL,
     cod_rol INT NOT NULL,
     FOREIGN KEY (cod_empleado) REFERENCES Empleados(cod_empleado) ON UPDATE CASCADE,
-    FOREIGN KEY (cod_rol) REFERENCES Roles(cod_rol) ON UPDATE CASCADE,
-    UNIQUE (cod_rol)
+    FOREIGN KEY (cod_rol) REFERENCES Roles(cod_rol) ON UPDATE CASCADE
 );
 
 -- Especialidades
