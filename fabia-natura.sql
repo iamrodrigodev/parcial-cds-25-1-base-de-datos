@@ -36,12 +36,29 @@ CREATE TABLE IF NOT EXISTS Empleados (
     FOREIGN KEY (dni) REFERENCES Personas(dni) ON UPDATE CASCADE
 );
 
+-- Roles
+CREATE TABLE IF NOT EXISTS Roles (
+    cod_rol INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_rol VARCHAR(50) UNIQUE NOT NULL,
+    descripcion TEXT,
+    fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Vendedores
 CREATE TABLE IF NOT EXISTS Vendedores (
     cod_vendedor INT AUTO_INCREMENT PRIMARY KEY,
     cod_empleado INT NOT NULL,
-    rol VARCHAR(20),
     FOREIGN KEY (cod_empleado) REFERENCES Empleados(cod_empleado) ON UPDATE CASCADE
+    FOREIGN KEY (cod_rol) REFERENCES Roles(cod_rol) ON UPDATE CASCADE,
+    UNIQUE (cod_rol)
+);
+
+-- Especialidad
+CREATE TABLE IF NOT EXISTS Especialidades (
+    cod_especialidad INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_especialidad VARCHAR(100) UNIQUE NOT NULL,
+    descripcion TEXT,
+    fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Asesores
@@ -49,8 +66,16 @@ CREATE TABLE IF NOT EXISTS Asesores (
     cod_asesor INT AUTO_INCREMENT PRIMARY KEY,
     cod_empleado INT NOT NULL,
     experiencia INT NOT NULL,
-    especialidad VARCHAR(20) NOT NULL,
     FOREIGN KEY (cod_empleado) REFERENCES Empleados(cod_empleado) ON UPDATE CASCADE
+);
+
+-- Asesores_Especialidades
+CREATE TABLE IF NOT EXISTS Asesores_Especialidades (
+    cod_asesor INT NOT NULL,
+    cod_especialidad INT NOT NULL,
+    PRIMARY KEY (cod_asesor, cod_especialidad),
+    FOREIGN KEY (cod_asesor) REFERENCES Asesores(cod_asesor) ON UPDATE CASCADE,
+    FOREIGN KEY (cod_especialidad) REFERENCES Especialidades(cod_especialidad) ON UPDATE CASCADE
 );
 
 -- Clientes
@@ -115,7 +140,8 @@ CREATE TABLE IF NOT EXISTS Productos (
     fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (cod_categoria) REFERENCES Categorias(cod_categoria) ON UPDATE CASCADE,
     FOREIGN KEY (ruc) REFERENCES Proveedores(ruc) ON UPDATE CASCADE,
-    FOREIGN KEY (cod_linea) REFERENCES Lineas(cod_linea) ON UPDATE CASCADE
+    FOREIGN KEY (cod_linea) REFERENCES Lineas(cod_linea) ON UPDATE CASCADE,
+    UNIQUE (cod_linea)
 );
 
 -- Facturas
