@@ -48,12 +48,13 @@ CREATE TABLE IF NOT EXISTS Roles (
 CREATE TABLE IF NOT EXISTS Vendedores (
     cod_vendedor INT AUTO_INCREMENT PRIMARY KEY,
     cod_empleado INT NOT NULL,
-    FOREIGN KEY (cod_empleado) REFERENCES Empleados(cod_empleado) ON UPDATE CASCADE
+    cod_rol INT NOT NULL,
+    FOREIGN KEY (cod_empleado) REFERENCES Empleados(cod_empleado) ON UPDATE CASCADE,
     FOREIGN KEY (cod_rol) REFERENCES Roles(cod_rol) ON UPDATE CASCADE,
     UNIQUE (cod_rol)
 );
 
--- Especialidad
+-- Especialidades
 CREATE TABLE IF NOT EXISTS Especialidades (
     cod_especialidad INT AUTO_INCREMENT PRIMARY KEY,
     nombre_especialidad VARCHAR(100) UNIQUE NOT NULL,
@@ -131,6 +132,7 @@ CREATE TABLE IF NOT EXISTS Productos (
     cod_producto INT AUTO_INCREMENT PRIMARY KEY,
     cod_categoria INT,
     ruc CHAR(11),
+    cod_linea INT,
     nombre VARCHAR(100) UNIQUE NOT NULL,
     descripcion TEXT,
     precio_compra FLOAT NOT NULL,
@@ -140,8 +142,7 @@ CREATE TABLE IF NOT EXISTS Productos (
     fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (cod_categoria) REFERENCES Categorias(cod_categoria) ON UPDATE CASCADE,
     FOREIGN KEY (ruc) REFERENCES Proveedores(ruc) ON UPDATE CASCADE,
-    FOREIGN KEY (cod_linea) REFERENCES Lineas(cod_linea) ON UPDATE CASCADE,
-    UNIQUE (cod_linea)
+    FOREIGN KEY (cod_linea) REFERENCES Lineas(cod_linea) ON UPDATE CASCADE
 );
 
 -- Facturas
