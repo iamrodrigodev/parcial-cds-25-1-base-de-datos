@@ -1,169 +1,147 @@
 USE FabiaNatura;
--- Stored Procedures for Categorias Management
+
+-- POST Categorias --
+DELIMITER $$
+CREATE PROCEDURE IF NOT EXISTS AgregarCategoria(
+    IN p_nombre_categoria VARCHAR(50),
+    IN p_descripcion TEXT
+)
+BEGIN
+    -- Validar que el nombre de la categoría no exista
+    DECLARE v_categoria_count INT;
+
+    -- Validar que el nombre de la categoría no esté vacío
+    IF p_nombre_categoria IS NULL OR p_nombre_categoria = '' THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El nombre de la categoría no puede estar vacío';
+    END IF;
+
+    SELECT COUNT(*) INTO v_categoria_count
+    FROM Categorias
+    WHERE nombre = p_nombre_categoria;
+
+    -- Si ya existe una categoría con el mismo nombre, lanzar un error
+    IF v_categoria_count > 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Ya existe una categoría con ese nombre';
+    END IF;
+
+    -- Insertar la nueva categoría en la tabla Categorias
+    INSERT INTO Categorias (nombre, descripcion)
+    VALUES (p_nombre_categoria, p_descripcion);
+END $$
+DELIMITER ;
+
+-- GET Categorias --
+DELIMITER $$
+CREATE PROCEDURE IF NOT EXISTS ObtenerTodasLasCategorias()
+BEGIN
+    -- Verificar si existen categorías en la tabla Categorias
+    DECLARE v_categorias_count INT;
+
+    SELECT COUNT(*) INTO v_categorias_count
+    FROM Categorias;
+
+    -- Si no existen categorías, lanzar un error
+    IF v_categorias_count = 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No existen categorías en la base de datos';
+    END IF;
+
+    -- Si existen categorías, obtener la lista de todas las categorías
+    SELECT cod_categoria, nombre, descripcion
+    FROM Categorias;
+END $$
+DELIMITER ;
 
 DELIMITER $$
-
--- Insertar una nueva categoria
-CREATE PROCEDURE IF NOT EXISTS sp_insertar_categoria(
-    IN p_nombre VARCHAR(50),
-    IN p_descripcion TEXT
+CREATE PROCEDURE IF NOT EXISTS ObtenerCategoriaPorId(
+    IN p_cod_categoria INT  -- ID de la categoría que se quiere obtener
 )
 BEGIN
-    -- Validate input parameters
-    IF p_nombre IS NULL OR p_nombre = '' THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: El nombre de la categoría no puede ser nulo o vacío';
+    -- Verificar si existe la categoría con el ID proporcionado
+    DECLARE v_categoria_count INT;
+
+    SELECT COUNT(*) INTO v_categoria_count
+    FROM Categorias
+    WHERE cod_categoria = p_cod_categoria;
+
+    -- Si no existe la categoría, lanzar un error
+    IF v_categoria_count = 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se encontró una categoría con ese ID';
     END IF;
 
-    -- Use empty string if description is NULL
-    IF p_descripcion IS NULL THEN
-        SET p_descripcion = '';
-    END IF;
+    -- Si existe la categoría, obtener la información de la categoría
+    SELECT cod_categoria, nombre, descripcion
+    FROM Categorias
+    WHERE cod_categoria = p_cod_categoria;
 
-    -- Check if categoria already exists (case-sensitive)
-    IF EXISTS (SELECT 1 FROM Categorias WHERE nombre = p_nombre) THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: Ya existe una categoría con este nombre';
-    END IF;
-
-    -- Insert new categoria
-    INSERT INTO Categorias (nombre, descripcion)
-    VALUES (p_nombre, p_descripcion);
-    
-    SELECT LAST_INSERT_ID() AS cod_categoria;
 END $$
+DELIMITER ;
 
--- Listar todas las categorias
-CREATE PROCEDURE IF NOT EXISTS sp_listar_categorias()
-BEGIN
-    DECLARE v_total_categorias INT;
-
-    -- Count total number of categorias
-    SELECT COUNT(*) INTO v_total_categorias FROM Categorias;
-
-    -- Check if no categorias exist
-    IF v_total_categorias = 0 THEN
-        SIGNAL SQLSTATE '02000'
-        SET MESSAGE_TEXT = 'Información: No hay categorías registradas en el sistema';
-    END IF;
-
-    -- List all categorias
-    SELECT 
-        *, 
-        v_total_categorias AS total_categorias 
-    FROM Categorias 
-    ORDER BY nombre;
-END $$
-
--- Obtener una categoria por su ID específico
-CREATE PROCEDURE IF NOT EXISTS sp_obtener_categoria_por_id(
+DELIMITER $$
+CREATE PROCEDURE IF NOT EXISTS ObtenerProductosPorCategoria(
     IN p_cod_categoria INT
 )
 BEGIN
-    -- Validate input parameter
-    IF p_cod_categoria IS NULL OR p_cod_categoria <= 0 THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: Código de categoría inválido';
-    END IF;
+    -- Verificar si la categoría con el cod_categoria existe
+    -- Verificar si existen productos en la categoría especificada
+    DECLARE v_categoria_count INT;
+    DECLARE v_productos_count INT;
 
-    -- Check if categoria exists
-    IF NOT EXISTS (SELECT 1 FROM Categorias WHERE cod_categoria = p_cod_categoria) THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: La categoría especificada no existe';
-    END IF;
-
-    -- Retrieve categoria details
-    SELECT * FROM Categorias 
-    WHERE cod_categoria = p_cod_categoria;
-END $$
-
--- Mostrar todos los productos de una categoría específica
-CREATE PROCEDURE IF NOT EXISTS sp_listar_productos_por_categoria(
-    IN p_cod_categoria INT
-)
-BEGIN
-    DECLARE v_nombre_categoria VARCHAR(50);
-
-    -- Validate input parameter
-    IF p_cod_categoria IS NULL OR p_cod_categoria <= 0 THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: Código de categoría inválido';
-    END IF;
-
-    -- Check if categoria exists and get categoria name
-    SELECT nombre  INTO v_nombre_categoria 
-    FROM Categorias 
+    -- Verificar si la categoría con el cod_categoria existe
+    SELECT COUNT(*) INTO v_categoria_count
+    FROM Categorias
     WHERE cod_categoria = p_cod_categoria;
 
-    -- Check if categoria exists (will raise an error if not found)
-    IF v_nombre_categoria IS NULL THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: La categoría especificada no existe';
+    -- Si no existe la categoría, lanzar un error
+    IF v_categoria_count = 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Error: No se encontró una categoría con ese ID';
     END IF;
 
-    -- Check if any products exist for this categoria
-    IF NOT EXISTS (SELECT 1 FROM Productos WHERE cod_categoria = p_cod_categoria) THEN
-        SIGNAL SQLSTATE '02000' 
-        SET MESSAGE_TEXT = 'Información: No hay productos asignados a esta categoría';
+    -- Verificar si existen productos en la categoría especificada
+    SELECT COUNT(*) INTO v_productos_count
+    FROM Productos
+    WHERE cod_categoria = p_cod_categoria;
+
+    -- Si no hay productos en la categoría, lanzar un error
+    IF v_productos_count = 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Error: No existen productos en esta categoría';
     END IF;
 
-    SELECT 
-        p.cod_producto,
-        p.nombre_producto,
-        p.descripcion,
-        p.precio,
-        p.stock,
-        c.nombre
-    FROM 
-        Productos p
-    JOIN 
-        Categorias c ON p.cod_categoria = c.cod_categoria
-    WHERE 
-        p.cod_categoria = p_cod_categoria;
+    -- Obtener todos los productos de la categoría especificada
+    SELECT p.cod_producto, p.nombre, p.descripcion, p.precio_venta, p.stock
+    FROM Productos p
+    WHERE p.cod_categoria = p_cod_categoria;
 END $$
+DELIMITER ;
 
--- Actualizar una categoria existente
-CREATE PROCEDURE IF NOT EXISTS sp_actualizar_categoria(
+-- PUT Categorias --
+DELIMITER $$
+CREATE PROCEDURE IF NOT EXISTS ActualizarCategoria(
     IN p_cod_categoria INT,
-    IN p_nombre VARCHAR(50),
-    IN p_descripcion TEXT
+    IN p_nuevo_nombre_categoria VARCHAR(50),  
+    IN p_nueva_descripcion TEXT        
 )
 BEGIN
-    -- Validate input parameters
-    IF p_cod_categoria IS NULL OR p_cod_categoria <= 0 THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: Código de categoría inválido';
+    -- Verificar si la categoría con el cod_categoria existe
+    DECLARE v_categoria_count INT;
+
+    -- Validar que el nuevo nombre de la categoría no esté vacío ni sea NULL
+    IF p_nuevo_nombre_categoria IS NULL OR p_nuevo_nombre_categoria = '' THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El nombre de la categoría no puede estar vacío';
     END IF;
 
-    IF p_nombre IS NULL OR p_nombre = '' THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: El nombre de la categoría no puede ser nulo o vacío';
-    END IF;
-
-    -- Use empty string if description is NULL
-    IF p_descripcion IS NULL THEN
-        SET p_descripcion = '';
-    END IF;
-
-    -- Check if categoria exists
-    IF NOT EXISTS (SELECT 1 FROM Categorias WHERE cod_categoria = p_cod_categoria) THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: La categoría especificada no existe';
-    END IF;
-
-    -- Check if new categoria name conflicts (case-sensitive)
-    IF EXISTS (SELECT 1 FROM Categorias 
-               WHERE nombre = p_nombre AND cod_categoria != p_cod_categoria) THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: Ya existe otra categoría con este nombre';
-    END IF;
-
-    UPDATE Categorias 
-    SET nombre = p_nombre, 
-        descripcion = p_descripcion
+    SELECT COUNT(*) INTO v_categoria_count
+    FROM Categorias
     WHERE cod_categoria = p_cod_categoria;
-    
-    SELECT ROW_COUNT() AS filas_actualizadas;
-END $$
 
+    -- Si no existe la categoría, lanzar un error
+    IF v_categoria_count = 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se encontró una categoría con ese ID';
+    END IF;
+
+    -- Actualizar el nombre y la descripción de la categoría
+    UPDATE Categorias
+    SET nombre = p_nuevo_nombre_categoria,
+        descripcion = p_nueva_descripcion
+    WHERE cod_categoria = p_cod_categoria;
+END $$
 DELIMITER ;
