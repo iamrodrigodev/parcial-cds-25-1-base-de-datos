@@ -1,101 +1,205 @@
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('78451265', 'Elston', 'Kenderdine', 'Tailby', '2001-08-22', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('36129222', 'Elnar', 'Eastby', 'Deeves', '1982-09-27', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('97436487', 'Athena', 'Cousins', 'Halburton', '1983-02-27', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('05943635', 'Carena', 'Klees', 'Clemente', '1995-08-12', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('69414801', 'Dorrie', 'Lowless', 'Challens', '1981-06-23', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('01036420', 'Estevan', 'Marcombe', 'Ligoe', '1986-02-01', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('82135923', 'Manolo', 'Perez', 'Matteris', '1977-03-01', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('90162061', 'Kristos', 'Haselden', 'Faiers', '1997-05-20', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('70069518', 'Phillie', 'Glitherow', 'Antonignetti', '1970-10-21', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('10180618', 'Saleem', 'Byforth', 'Yurinov', '2000-12-21', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('49215334', 'Jo-ann', 'Halstead', 'Boole', '1976-04-05', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('37950960', 'Reid', 'Harme', 'Jedrzejczak', '1971-09-23', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('54389505', 'Niki', 'Kells', 'Cassius', '1975-11-17', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('31466395', 'Mil', 'Dady', 'Rainforth', '1977-03-30', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('97631613', 'Nanny', 'Strelitzer', 'Poyner', '1995-11-12', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('24432822', 'Gwenore', 'Grishaev', 'Novotne', '1970-07-24', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('05472609', 'Arluene', 'Webben', 'Matzen', '1970-08-25', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('33104441', 'Fannie', 'Bernardoni', 'Balcock', '1992-05-17', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('39482975', 'Sergei', 'Leadley', 'Scoyne', '1997-08-11', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('18418402', 'Alfie', 'Habershon', 'Bogies', '1985-02-17', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('62700547', 'Malcolm', 'Kennedy', 'Sibbson', '1970-01-31', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('35155937', 'Nissy', 'Jellyman', 'Fardell', '1979-07-17', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('50664696', 'Chrysa', 'Studeart', 'Frankcomb', '1987-08-16', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('28053157', 'Eyde', 'Isaac', 'Piggens', '1973-05-23', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('54167291', 'Margaret', 'Davinet', 'Abazi', '1972-03-27', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('11540457', 'Lusa', 'Seaward', 'Fake', '1999-04-11', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('77684243', 'L;urette', 'Wille', 'Gleave', '1982-10-15', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('90560357', 'Otes', 'Sabathier', 'Bartleet', '1984-05-31', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('02333727', 'Carine', 'Trevers', 'Van''t Hoff', '1988-07-17', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('19887857', 'Maritsa', 'Bilbrey', 'Anan', '1999-11-06', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('70649355', 'Courtenay', 'Kroin', 'Pringuer', '1971-04-15', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('07689801', 'Moina', 'Baltrushaitis', 'Burgwyn', '1995-10-06', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('39246922', 'Tawnya', 'Clackson', 'Canas', '1999-09-09', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('47663204', 'Latashia', 'Leyband', 'Sessions', '1972-05-13', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('35255109', 'Aida', 'Lasselle', 'Prandi', '1992-01-26', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('88389797', 'Dorolisa', 'Feak', 'Maymand', '2001-02-24', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('60447849', 'Randall', 'Gomery', 'Whitta', '1987-06-04', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('55614722', 'Dreddy', 'Dobney', 'Worham', '1971-11-03', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('44174045', 'Jory', 'Cardenosa', 'Creddon', '1984-10-25', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('56853312', 'Elenore', 'McGaughey', 'Bainbrigge', '1976-12-06', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('58712443', 'Tobin', 'Mochan', 'Vido', '2001-11-20', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('31161069', 'Mallissa', 'Hallex', 'Nossent', '1972-10-08', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('06307999', 'Deni', 'De Cruze', 'Shewry', '1985-07-25', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('94454469', 'Hill', 'Whate', 'Paddy', '1995-06-21', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('93111946', 'Merrick', 'Noblett', 'Tante', '1988-01-09', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('23574633', 'Gordon', 'Konertz', 'Ledington', '1986-12-13', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('70876393', 'Rosamond', 'Anniwell', 'Galfour', '1979-08-25', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('30998599', 'Welby', 'Powrie', 'Valenta', '1977-03-10', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('99666333', 'Sandro', 'Fellgate', 'Freer', '1988-08-29', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('94547861', 'Jonas', 'Whewill', 'Adamkiewicz', '1991-10-09', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('19726475', 'Vinni', 'Yegorkin', 'Fussey', '1996-11-08', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('55910976', 'Trula', 'Sinnat', 'Caldecot', '1998-06-06', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('24279885', 'Monika', 'O''Fielly', 'Georgins', '1986-02-26', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('53964100', 'Lorry', 'Abramino', 'Peskin', '2002-04-07', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('81201095', 'Karna', 'Deacon', 'Noice', '2002-09-26', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('74617998', 'Norma', 'Featherstone', 'Purviss', '1989-03-23', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('37012854', 'Conan', 'Bernot', 'Plumbridge', '1982-06-27', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('33777255', 'Addie', 'Neesam', 'Ferrieri', '1998-05-28', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('63118664', 'Cele', 'Ongin', 'Redgewell', '1977-07-23', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('14039369', 'Nonnah', 'Scotchforth', 'Roote', '1976-08-23', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('76198140', 'Bren', 'O''Collopy', 'Ryding', '2003-08-12', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('69372537', 'Gabrila', 'Farncombe', 'Gabbitas', '1993-05-07', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('30608007', 'Lissie', 'O''Donovan', 'Winston', '1977-07-31', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('86927207', 'Buddy', 'Fewless', 'Mariotte', '1977-07-06', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('51346787', 'Sigismondo', 'Legate', 'Goldhawk', '2002-06-25', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('75498055', 'Lindy', 'Boagey', 'Neljes', '1979-06-04', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('23977299', 'Emelda', 'Jolliss', 'Bernardez', '1984-01-07', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('03106558', 'Sven', 'Harwin', 'Howton', '1982-12-22', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('72774212', 'Jard', 'Benedek', 'Joron', '1990-12-28', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('12215462', 'Filberto', 'Sieve', 'Roches', '1988-11-27', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('68415054', 'Rusty', 'Straniero', 'Belderfield', '1977-01-22', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('47128407', 'Veronike', 'Tendahl', 'Tingle', '1995-08-20', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('30411702', 'Alfy', 'McFadzean', 'Fick', '1970-06-04', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('25168912', 'Nathaniel', 'Harding', 'Bruckner', '2002-10-19', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('18271789', 'Somerset', 'Whitehall', 'Morcom', '1977-03-15', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('73770381', 'Lanie', 'Maides', 'Juschke', '1979-12-23', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('03769370', 'Johna', 'Scroyton', 'Milborn', '1988-03-30', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('77692820', 'Farr', 'Bande', 'Deakin', '2003-03-28', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('46731726', 'Frederico', 'Godbolt', 'Brayford', '1972-12-11', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('70290353', 'Bogart', 'Castells', 'Lamp', '1973-03-30', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('60451288', 'Pepita', 'McGinny', 'Chalcroft', '1996-04-12', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('73827131', 'Eolanda', 'Muddiman', 'Doubrava', '1971-07-20', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('73979604', 'Libbie', 'Shillington', 'Bracknall', '1971-10-21', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('63075742', 'Thaddus', 'Walburn', 'Poel', '2004-12-20', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('77042910', 'Olwen', 'Cutts', 'Gudeman', '1979-07-07', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('29467755', 'Harwilll', 'Laurie', 'Buscombe', '1980-04-22', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('56697260', 'Duane', 'Reddell', 'Arnao', '2003-05-12', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('78043843', 'Hestia', 'Farge', 'Collomosse', '1970-07-14', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('29083134', 'Beverley', 'Ravel', 'Mergue', '1976-03-08', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('79117111', 'Kendell', 'Severns', 'Clemon', '1982-06-04', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('08641152', 'Eula', 'Sailor', 'Barber', '1998-08-21', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('95508805', 'Darbie', 'Franzel', 'Wysome', '1985-07-18', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('66323089', 'Hank', 'Stitch', 'Dutnall', '1975-11-19', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('46644116', 'Donella', 'Braunle', 'Petit', '2001-06-17', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('81149737', 'Deny', 'Brockman', 'Brotherwood', '2000-08-06', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('10325194', 'Jessy', 'Izatt', 'Bartram', '1993-01-07', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('00386246', 'Leshia', 'Gladdolph', 'Rhodus', '1990-04-03', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('61639057', 'Cleveland', 'Kimmel', 'Giggs', '1982-02-14', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('83018047', 'Skipper', 'Harrowell', 'Alner', '2002-12-15', '2025-05-09');
-insert into personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) values ('05254216', 'Daniella', 'Ivchenko', 'Bovis', '1977-10-13', '2025-05-09');
+INSERT TO personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) VALUES ('78451265', 'Elston', 'Kenderdine', 'Tailby', '2001-08-22', '2025-05-09') ,
+ ('36129222', 'Elnar', 'Eastby', 'Deeves', '1982-09-27', '2025-05-09') ,
+ ('97436487', 'Athena', 'Cousins', 'Halburton', '1983-02-27', '2025-05-09') ,
+ ('05943635', 'Carena', 'Klees', 'Clemente', '1995-08-12', '2025-05-09') ,
+ ('69414801', 'Dorrie', 'Lowless', 'Challens', '1981-06-23', '2025-05-09') ,
+ ('01036420', 'Estevan', 'Marcombe', 'Ligoe', '1986-02-01', '2025-05-09') ,
+ ('82135923', 'Manolo', 'Perez', 'Matteris', '1977-03-01', '2025-05-09') ,
+ ('90162061', 'Kristos', 'Haselden', 'Faiers', '1997-05-20', '2025-05-09') ,
+ ('70069518', 'Phillie', 'Glitherow', 'Antonignetti', '1970-10-21', '2025-05-09') ,
+ ('10180618', 'Saleem', 'Byforth', 'Yurinov', '2000-12-21', '2025-05-09') ,
+ ('49215334', 'Jo-ann', 'Halstead', 'Boole', '1976-04-05', '2025-05-09') ,
+ ('37950960', 'Reid', 'Harme', 'Jedrzejczak', '1971-09-23', '2025-05-09') ,
+ ('54389505', 'Niki', 'Kells', 'Cassius', '1975-11-17', '2025-05-09') ,
+ ('31466395', 'Mil', 'Dady', 'Rainforth', '1977-03-30', '2025-05-09') ,
+ ('97631613', 'Nanny', 'Strelitzer', 'Poyner', '1995-11-12', '2025-05-09') ,
+ ('24432822', 'Gwenore', 'Grishaev', 'Novotne', '1970-07-24', '2025-05-09') ,
+ ('05472609', 'Arluene', 'Webben', 'Matzen', '1970-08-25', '2025-05-09') ,
+ ('33104441', 'Fannie', 'Bernardoni', 'Balcock', '1992-05-17', '2025-05-09') ,
+ ('39482975', 'Sergei', 'Leadley', 'Scoyne', '1997-08-11', '2025-05-09') ,
+ ('18418402', 'Alfie', 'Habershon', 'Bogies', '1985-02-17', '2025-05-09') ,
+ ('62700547', 'Malcolm', 'Kennedy', 'Sibbson', '1970-01-31', '2025-05-09') ,
+ ('35155937', 'Nissy', 'Jellyman', 'Fardell', '1979-07-17', '2025-05-09') ,
+ ('50664696', 'Chrysa', 'Studeart', 'Frankcomb', '1987-08-16', '2025-05-09') ,
+ ('28053157', 'Eyde', 'Isaac', 'Piggens', '1973-05-23', '2025-05-09') ,
+ ('54167291', 'Margaret', 'Davinet', 'Abazi', '1972-03-27', '2025-05-09') ,
+ ('11540457', 'Lusa', 'Seaward', 'Fake', '1999-04-11', '2025-05-09') ,
+ ('77684243', 'L ,urette', 'Wille', 'Gleave', '1982-10-15', '2025-05-09') ,
+ ('90560357', 'Otes', 'Sabathier', 'Bartleet', '1984-05-31', '2025-05-09') ,
+ ('02333727', 'Carine', 'Trevers', 'Van''t Hoff', '1988-07-17', '2025-05-09') ,
+ ('19887857', 'Maritsa', 'Bilbrey', 'Anan', '1999-11-06', '2025-05-09') ,
+ ('70649355', 'Courtenay', 'Kroin', 'Pringuer', '1971-04-15', '2025-05-09') ,
+ ('07689801', 'Moina', 'Baltrushaitis', 'Burgwyn', '1995-10-06', '2025-05-09') ,
+ ('39246922', 'Tawnya', 'Clackson', 'Canas', '1999-09-09', '2025-05-09') ,
+ ('47663204', 'Latashia', 'Leyband', 'Sessions', '1972-05-13', '2025-05-09') ,
+ ('35255109', 'Aida', 'Lasselle', 'Prandi', '1992-01-26', '2025-05-09') ,
+ ('88389797', 'Dorolisa', 'Feak', 'Maymand', '2001-02-24', '2025-05-09') ,
+ ('60447849', 'Randall', 'Gomery', 'Whitta', '1987-06-04', '2025-05-09') ,
+ ('55614722', 'Dreddy', 'Dobney', 'Worham', '1971-11-03', '2025-05-09') ,
+ ('44174045', 'Jory', 'Cardenosa', 'Creddon', '1984-10-25', '2025-05-09') ,
+ ('56853312', 'Elenore', 'McGaughey', 'Bainbrigge', '1976-12-06', '2025-05-09') ,
+ ('58712443', 'Tobin', 'Mochan', 'Vido', '2001-11-20', '2025-05-09') ,
+ ('31161069', 'Mallissa', 'Hallex', 'Nossent', '1972-10-08', '2025-05-09') ,
+ ('06307999', 'Deni', 'De Cruze', 'Shewry', '1985-07-25', '2025-05-09') ,
+ ('94454469', 'Hill', 'Whate', 'Paddy', '1995-06-21', '2025-05-09') ,
+ ('93111946', 'Merrick', 'Noblett', 'Tante', '1988-01-09', '2025-05-09') ,
+ ('23574633', 'Gordon', 'Konertz', 'Ledington', '1986-12-13', '2025-05-09') ,
+ ('70876393', 'Rosamond', 'Anniwell', 'Galfour', '1979-08-25', '2025-05-09') ,
+ ('30998599', 'Welby', 'Powrie', 'Valenta', '1977-03-10', '2025-05-09') ,
+ ('99666333', 'Sandro', 'Fellgate', 'Freer', '1988-08-29', '2025-05-09') ,
+ ('94547861', 'Jonas', 'Whewill', 'Adamkiewicz', '1991-10-09', '2025-05-09') ,
+ ('19726475', 'Vinni', 'Yegorkin', 'Fussey', '1996-11-08', '2025-05-09') ,
+ ('55910976', 'Trula', 'Sinnat', 'Caldecot', '1998-06-06', '2025-05-09') ,
+ ('24279885', 'Monika', 'O''Fielly', 'Georgins', '1986-02-26', '2025-05-09') ,
+ ('53964100', 'Lorry', 'Abramino', 'Peskin', '2002-04-07', '2025-05-09') ,
+ ('81201095', 'Karna', 'Deacon', 'Noice', '2002-09-26', '2025-05-09') ,
+ ('74617998', 'Norma', 'Featherstone', 'Purviss', '1989-03-23', '2025-05-09') ,
+ ('37012854', 'Conan', 'Bernot', 'Plumbridge', '1982-06-27', '2025-05-09') ,
+ ('33777255', 'Addie', 'Neesam', 'Ferrieri', '1998-05-28', '2025-05-09') ,
+ ('63118664', 'Cele', 'Ongin', 'Redgewell', '1977-07-23', '2025-05-09') ,
+ ('14039369', 'Nonnah', 'Scotchforth', 'Roote', '1976-08-23', '2025-05-09') ,
+ ('76198140', 'Bren', 'O''Collopy', 'Ryding', '2003-08-12', '2025-05-09') ,
+ ('69372537', 'Gabrila', 'Farncombe', 'Gabbitas', '1993-05-07', '2025-05-09') ,
+ ('30608007', 'Lissie', 'O''Donovan', 'Winston', '1977-07-31', '2025-05-09') ,
+ ('86927207', 'Buddy', 'Fewless', 'Mariotte', '1977-07-06', '2025-05-09') ,
+ ('51346787', 'Sigismondo', 'Legate', 'Goldhawk', '2002-06-25', '2025-05-09') ,
+ ('75498055', 'Lindy', 'Boagey', 'Neljes', '1979-06-04', '2025-05-09') ,
+ ('23977299', 'Emelda', 'Jolliss', 'Bernardez', '1984-01-07', '2025-05-09') ,
+ ('03106558', 'Sven', 'Harwin', 'Howton', '1982-12-22', '2025-05-09') ,
+ ('72774212', 'Jard', 'Benedek', 'Joron', '1990-12-28', '2025-05-09') ,
+ ('12215462', 'Filberto', 'Sieve', 'Roches', '1988-11-27', '2025-05-09') ,
+ ('68415054', 'Rusty', 'Straniero', 'Belderfield', '1977-01-22', '2025-05-09') ,
+ ('47128407', 'Veronike', 'Tendahl', 'Tingle', '1995-08-20', '2025-05-09') ,
+ ('30411702', 'Alfy', 'McFadzean', 'Fick', '1970-06-04', '2025-05-09') ,
+ ('25168912', 'Nathaniel', 'Harding', 'Bruckner', '2002-10-19', '2025-05-09') ,
+ ('18271789', 'Somerset', 'Whitehall', 'Morcom', '1977-03-15', '2025-05-09') ,
+ ('73770381', 'Lanie', 'Maides', 'Juschke', '1979-12-23', '2025-05-09') ,
+ ('03769370', 'Johna', 'Scroyton', 'Milborn', '1988-03-30', '2025-05-09') ,
+ ('77692820', 'Farr', 'Bande', 'Deakin', '2003-03-28', '2025-05-09') ,
+ ('46731726', 'Frederico', 'Godbolt', 'Brayford', '1972-12-11', '2025-05-09') ,
+ ('70290353', 'Bogart', 'Castells', 'Lamp', '1973-03-30', '2025-05-09') ,
+ ('60451288', 'Pepita', 'McGinny', 'Chalcroft', '1996-04-12', '2025-05-09') ,
+ ('73827131', 'Eolanda', 'Muddiman', 'Doubrava', '1971-07-20', '2025-05-09') ,
+ ('73979604', 'Libbie', 'Shillington', 'Bracknall', '1971-10-21', '2025-05-09') ,
+ ('63075742', 'Thaddus', 'Walburn', 'Poel', '2004-12-20', '2025-05-09') ,
+ ('77042910', 'Olwen', 'Cutts', 'Gudeman', '1979-07-07', '2025-05-09') ,
+ ('29467755', 'Harwilll', 'Laurie', 'Buscombe', '1980-04-22', '2025-05-09') ,
+ ('56697260', 'Duane', 'Reddell', 'Arnao', '2003-05-12', '2025-05-09') ,
+ ('78043843', 'Hestia', 'Farge', 'Collomosse', '1970-07-14', '2025-05-09') ,
+ ('29083134', 'Beverley', 'Ravel', 'Mergue', '1976-03-08', '2025-05-09') ,
+ ('79117111', 'Kendell', 'Severns', 'Clemon', '1982-06-04', '2025-05-09') ,
+ ('08641152', 'Eula', 'Sailor', 'Barber', '1998-08-21', '2025-05-09') ,
+ ('95508805', 'Darbie', 'Franzel', 'Wysome', '1985-07-18', '2025-05-09') ,
+ ('66323089', 'Hank', 'Stitch', 'Dutnall', '1975-11-19', '2025-05-09') ,
+ ('46644116', 'Donella', 'Braunle', 'Petit', '2001-06-17', '2025-05-09') ,
+ ('81149737', 'Deny', 'Brockman', 'Brotherwood', '2000-08-06', '2025-05-09') ,
+ ('10325194', 'Jessy', 'Izatt', 'Bartram', '1993-01-07', '2025-05-09') ,
+ ('00386246', 'Leshia', 'Gladdolph', 'Rhodus', '1990-04-03', '2025-05-09') ,
+ ('61639057', 'Cleveland', 'Kimmel', 'Giggs', '1982-02-14', '2025-05-09') ,
+ ('83018047', 'Skipper', 'Harrowell', 'Alner', '2002-12-15', '2025-05-09') ,
+ ('05254216', 'Daniella', 'Ivchenko', 'Bovis', '1977-10-13', '2025-05-09') ,
 
+
+
+
+INSERT INTO telefonos_personas (telefono, dni) VALUES
+('912345678', '83018047'),
+('913456789', '86927207'),
+('914567890', '88389797'),
+('915678901', '90162061'),
+('916789012', '90560357'),
+('917890123', '93111946'),
+('918901234', '94454469'),
+('919012345', '94547861'),
+('920123456', '95508805'),
+('921234567', '97436487'),
+('922345678', '97631613'),
+('923456789', '99666333'),
+('924567890', '00386246'),
+('925678901', '01036420'),
+('926789012', '02333727'),
+('927890123', '03106558'),
+('928901234', '03769370'),
+('929012345', '05254216'),
+('930123456', '05472609'),
+('931234567', '05943635'),
+('932345678', '06307999'),
+('933456789', '07689801'),
+('934567890', '08641152'),
+('935678901', '10180618'),
+('936789012', '10325194'),
+('937890123', '11540457'),
+('938901234', '12215462'),
+('939012345', '14039369'),
+('940123456', '18271789'),
+('941234567', '18418402'),
+('942345678', '19726475'),
+('943456789', '19887857'),
+('944567890', '23574633'),
+('945678901', '23977299'),
+('946789012', '24279885'),
+('947890123', '24432822'),
+('948901234', '25168912'),
+('949012345', '28053157'),
+('950123456', '29083134'),
+('951234567', '29467755'),
+('952345678', '30411702'),
+('953456789', '30608007'),
+('954567890', '30998599'),
+('955678901', '31161069'),
+('956789012', '31466395'),
+('957890123', '33104441'),
+('958901234', '33777255'),
+('959012345', '35155937'),
+('960123456', '35255109'),
+('961234567', '36129222'),
+('962345678', '37012854'),
+('963456789', '37950960'),
+('964567890', '39246922'),
+('965678901', '39482975'),
+('966789012', '44174045'),
+('967890123', '46644116'),
+('968901234', '46731726'),
+('969012345', '47128407'),
+('970123456', '47663204'),
+('971234567', '49215334'),
+('972345678', '50664696'),
+('973456789', '51346787'),
+('974567890', '53964100'),
+('975678901', '54167291'),
+('976789012', '54389505'),
+('977890123', '55614722'),
+('978901234', '55910976'),
+('979012345', '56697260'),
+('980123456', '56853312'),
+('981234567', '58712443'),
+('982345678', '60447849'),
+('983456789', '60451288'),
+('984567890', '61639057'),
+('985678901', '62700547'),
+('986789012', '63075742'),
+('987890123', '63118664'),
+('988901234', '66323089'),
+('989012345', '68415054'),
+('990123456', '69372537'),
+('991234567', '69414801'),
+('992345678', '70069518'),
+('993456789', '70290353'),
+('994567890', '70649355'),
+('995678901', '70876393'),
+('996789012', '72774212'),
+('997890123', '73770381'),
+('998901234', '73827131'),
+('999012345', '73979604'),
+('912234567', '74617998'),
+('913345678', '75498055'),
+('914456789', '76198140'),
+('915567890', '77042910'),
+('916678901', '77684243'),
+('917789012', '77692820'),
+('918890123', '78043843'),
+('919901234', '78451265'),
+('920012345', '79117111'),
+('921123456', '81149737'),
+('922234567', '81201095'),
+('923345678', '82135923') ,
