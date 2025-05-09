@@ -42,31 +42,26 @@ CREATE PROCEDURE IF NOT EXISTS ObtenerDireccionesPersona(
     IN p_dni CHAR(8)
 )
 BEGIN
-    -- Declarar variables
     DECLARE v_direcciones_count INT;
 
-    -- Validar que el DNI no esté vacío ni sea NULL
     IF p_dni IS NULL OR p_dni = '' THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El DNI no puede estar vacío';
     END IF;
 
-    -- Verificar si el DNI existe en la tabla Personas
     IF NOT EXISTS (SELECT 1 FROM Personas WHERE dni = p_dni) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El DNI proporcionado no existe en la base de datos';
     END IF;
 
-    -- Contar direcciones para este DNI
     SELECT COUNT(*) INTO v_direcciones_count
     FROM Direcciones_Personas
     WHERE dni = p_dni;
 
-    -- Si no hay direcciones, lanzar un error
     IF v_direcciones_count = 0 THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se encontraron direcciones para este DNI';
     END IF;
 
-    -- Obtener todas las direcciones de la persona
-    SELECT dni, direccion, tipo_direccion
+    -- ✅ Solo seleccionamos columnas que existen
+    SELECT dni, direccion
     FROM Direcciones_Personas
     WHERE dni = p_dni;
 END $$
