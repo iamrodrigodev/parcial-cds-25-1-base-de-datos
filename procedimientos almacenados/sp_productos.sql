@@ -1,10 +1,8 @@
 USE FabiaNatura;
--- Procedimientos Almacenados para Gestión de Productos
 
+-- POST Lineas --
 DELIMITER $$
-
--- Insertar un nuevo producto en el sistema
-CREATE PROCEDURE IF NOT EXISTS sp_insertar_producto(
+CREATE PROCEDURE IF NOT EXISTS AgregarProducto(
     IN p_nombre VARCHAR(100),
     IN p_descripcion TEXT,
     IN p_precio_compra FLOAT,
@@ -22,59 +20,53 @@ BEGIN
     -- Validar parámetros de entrada
     IF p_nombre IS NULL OR p_nombre = '' THEN
         SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: El nombre del producto no puede ser nulo o vacío';
+        SET MESSAGE_TEXT = 'El nombre del producto no puede ser nulo o vacío';
     END IF;
 
     -- Validar precios de compra y venta
     IF p_precio_compra IS NULL OR p_precio_compra < 0 THEN
         SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: El precio de compra debe ser un valor no negativo';
+        SET MESSAGE_TEXT = 'El precio de compra debe ser un valor no negativo';
     END IF;
 
     IF p_precio_venta IS NULL OR p_precio_venta < 0 THEN
         SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: El precio de venta debe ser un valor no negativo';
+        SET MESSAGE_TEXT = 'El precio de venta debe ser un valor no negativo';
     END IF;
 
     -- Validar cantidad de stock
     IF p_stock IS NULL OR p_stock < 0 THEN
         SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: El stock debe ser un valor no negativo';
+        SET MESSAGE_TEXT = 'El stock debe ser un valor no negativo';
+    END IF;
+
+    IF p_precio_venta IS NULL OR p_precio_venta > p_precio_compra THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'El precio de venta debe ser un valor no negativo';
     END IF;
 
     -- Validar código de categoría
     IF p_cod_categoria IS NULL OR p_cod_categoria <= 0 THEN
         SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: Código de categoría inválido';
-    END IF;
-
-    -- Validar código de línea (opcional)
-    IF p_cod_linea IS NOT NULL AND p_cod_linea <= 0 THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: Código de línea inválido';
-    END IF;
-
-    -- Usar cadena vacía si la descripción es NULA
-    IF p_descripcion IS NULL THEN
-        SET p_descripcion = '';
+        SET MESSAGE_TEXT = 'Código de categoría inválido';
     END IF;
 
     -- Verificar si la categoría existe en la base de datos
     IF NOT EXISTS (SELECT 1 FROM Categorias WHERE cod_categoria = p_cod_categoria) THEN
         SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: La categoría especificada no existe';
+        SET MESSAGE_TEXT = 'La categoría especificada no existe';
     END IF;
 
     -- Verificar si la línea existe si se proporciona
     IF p_cod_linea IS NOT NULL AND NOT EXISTS (SELECT 1 FROM Lineas WHERE cod_linea = p_cod_linea) THEN
         SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: La línea especificada no existe';
+        SET MESSAGE_TEXT = 'La línea especificada no existe';
     END IF;
 
     -- Verificar si el producto ya existe
     IF EXISTS (SELECT 1 FROM Productos WHERE nombre = p_nombre) THEN
         SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: Ya existe un producto con este nombre';
+        SET MESSAGE_TEXT = 'Ya existe un producto con este nombre';
     END IF;
 
     -- Insertar nuevo producto en la base de datos
@@ -97,8 +89,6 @@ BEGIN
         p_cod_linea,
         p_estado
     );
-    
-    SELECT LAST_INSERT_ID() AS cod_producto;
 END $$
 
 -- Listar todos los productos del sistema
