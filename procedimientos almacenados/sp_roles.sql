@@ -42,7 +42,7 @@ BEGIN
     END IF;
 
     -- Si existen roles, obtener todos los roles
-    SELECT cod_rol, nombre_rol, descripcion
+    SELECT cod_rol, nombre_rol, descripcion, fecha_registro
     FROM Roles;   
 END $$
 DELIMITER ;
@@ -65,7 +65,7 @@ BEGIN
     END IF;
 
     -- Si existe el rol, obtener la información del rol
-    SELECT cod_rol, nombre_rol, descripcion
+    SELECT cod_rol, nombre_rol, descripcion, fecha_registro
     FROM Roles
     WHERE cod_rol = p_cod_rol; 
 END $$
