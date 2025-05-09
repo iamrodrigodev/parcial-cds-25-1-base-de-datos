@@ -1,35 +1,36 @@
 USE FabiaNatura;
--- Stored Procedures for Roles Management
 
 DELIMITER $$
-
--- Insertar un nuevo rol
-CREATE PROCEDURE IF NOT EXISTS sp_insertar_rol(
+CREATE PROCEDURE IF NOT EXISTS AgregarRol(
     IN p_nombre_rol VARCHAR(50),
     IN p_descripcion TEXT
 )
 BEGIN
-    -- Validate input parameters
+    -- Validar que el nombre del rol no sea nulo ni vacío
     IF p_nombre_rol IS NULL OR TRIM(p_nombre_rol) = '' THEN
         SIGNAL SQLSTATE '45000' 
         SET MESSAGE_TEXT = 'Error: El nombre del rol no puede ser nulo o vacío';
     END IF;
 
-    -- Sanitize description if NULL
+    -- Sanitizar la descripción (si es nula, asignamos una cadena vacía)
     SET p_descripcion = COALESCE(p_descripcion, '');
 
-    -- Check if role already exists
+    -- Verificar si ya existe un rol con el mismo nombre (ignorando mayúsculas/minúsculas)
     IF EXISTS (SELECT 1 FROM Roles WHERE LOWER(nombre_rol) = LOWER(TRIM(p_nombre_rol))) THEN
         SIGNAL SQLSTATE '45000' 
         SET MESSAGE_TEXT = 'Error: Ya existe un rol con este nombre';
     END IF;
 
-    -- Insert new role
+    -- Insertar el nuevo rol en la tabla Roles
     INSERT INTO Roles (nombre_rol, descripcion)
     VALUES (TRIM(p_nombre_rol), p_descripcion);
     
+    -- Retornar el ID del rol recién insertado
     SELECT LAST_INSERT_ID() AS cod_rol;
 END $$
+
+DELIMITER ;
+
 
 -- Listar todos los roles
 CREATE PROCEDURE IF NOT EXISTS sp_listar_roles()
