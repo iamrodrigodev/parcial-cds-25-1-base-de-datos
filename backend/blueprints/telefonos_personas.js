@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../db');
-const verificarToken = require('../middleware/auth');
+const db = require('../../db');
+const verificarToken = require('../../middleware/auth');
 
 // Obtener teleonos de una persona
 router.get('/:dni', verificarToken, (req, res) => {

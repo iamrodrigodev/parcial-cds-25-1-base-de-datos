@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../db');
-const verificarToken = require('../middleware/auth');
+const db = require('../../db');
+const verificarToken = require('../../middleware/auth');
 
 // Obtener todos los contratos
 router.get('/', verificarToken, (req, res) => {

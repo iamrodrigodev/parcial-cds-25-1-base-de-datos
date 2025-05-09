@@ -26,30 +26,30 @@ const db = mysql.createConnection({
 db.connect((err) => {
   if (err) {
     console.error('Error al conectar a la base de datos:', err.message);
-    process.exit(1); // Terminar el proceso si hay un error de conexión
+    process.exit(1); // Terminar el proceso si hay un error de conexion
   }
   console.log('Conexión exitosa a la base de datos MySQL');
 });
 
 // Rutas (Importar los blueprints de las rutas)
-const personasRoutes = require('./routes/personas');
-const telefonosPersonasRoutes = require('./routes/telefonos_personas');
-const direccionesPersonasRoutes = require('./routes/direcciones_personas');
-const empleadosRoutes = require('./routes/empleados');
-const rolesRoutes = require('./routes/roles');
-const vendedoresRoutes = require('./routes/vendedores');
-const especialidadesRoutes = require('./routes/especialidades');
-const asesoresRoutes = require('./routes/asesores');
-const asesoresEspecialidadesRoutes = require('./routes/asesores');
-const clientesRoutes = require('./routes/clientes');
-const contratosRoutes = require('./routes/contratos');
-const proveedoresRoutes = require('./routes/proveedores');
-const lineasRoutes = require('./routes/lineas');
-const productosRoutes = require('./routes/productos');
-const facturasRoutes = require('./routes/facturas');
-const detalleFacturasRoutes = require('./routes/detalle_facturas');
+const personasRoutes = require('./blueprints/personas');
+const telefonosPersonasRoutes = require('./blueprints/telefonos_personas');
+const direccionesPersonasRoutes = require('./blueprints/direcciones_personas');
+const empleadosRoutes = require('./blueprints/empleados');
+const rolesRoutes = require('./blueprints/roles');
+const vendedoresRoutes = require('./blueprints/vendedores');
+const especialidadesRoutes = require('./blueprints/especialidades');
+const asesoresRoutes = require('./blueprints/asesores');
+const asesoresEspecialidadesRoutes = require('./blueprints/asesores');
+const clientesRoutes = require('./blueprints/clientes');
+const contratosRoutes = require('./blueprints/contratos');
+const proveedoresRoutes = require('./blueprints/proveedores');
+const lineasRoutes = require('./blueprints/lineas');
+const productosRoutes = require('./blueprints/productos');
+const facturasRoutes = require('./blueprints/facturas');
+const detalleFacturasRoutes = require('./blueprints/detalle_facturas');
 
-// Usar las rutas en la aplicación
+// Usar las rutas en la aplicacion
 app.use('/api/personas', personasRoutes);
 app.use('/api/telefonos_personas', telefonosPersonasRoutes);
 app.use('/api/direcciones_personas', direccionesPersonasRoutes);
@@ -67,7 +67,7 @@ app.use('/api/productos', productosRoutes);
 app.use('/api/facturas', facturasRoutes);
 app.use('/api/detalle_facturas', detalleFacturasRoutes);
 
-// Ruta raíz
+// Ruta raiz
 app.get('/', (req, res) => {
   res.send('¡Bienvenido a la API de FabiaNatura!');
 });
@@ -78,4 +78,4 @@ app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
 
-module.exports = db; // Exportar la conexión a la base de datos para su uso en otros módulos
+module.exports = db; // Exportar la conexion a la base de datos para su uso en otros modulos
