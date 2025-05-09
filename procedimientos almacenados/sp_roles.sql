@@ -1,36 +1,37 @@
 USE FabiaNatura;
+-- Stored Procedures for Roles Management
 
 DELIMITER $$
-CREATE PROCEDURE IF NOT EXISTS AgregarRol(
+
+-- Insertar un nuevo rol
+CREATE PROCEDURE IF NOT EXISTS sp_insertar_rol(
     IN p_nombre_rol VARCHAR(50),
     IN p_descripcion TEXT
 )
 BEGIN
-    -- Validar que el nombre del rol no sea nulo ni vacío
-    IF p_nombre_rol IS NULL OR TRIM(p_nombre_rol) = '' THEN
+    -- Validate input parameters
+    IF p_nombre_rol IS NULL OR p_nombre_rol = '' THEN
         SIGNAL SQLSTATE '45000' 
         SET MESSAGE_TEXT = 'Error: El nombre del rol no puede ser nulo o vacío';
     END IF;
 
-    -- Sanitizar la descripción (si es nula, asignamos una cadena vacía)
-    SET p_descripcion = COALESCE(p_descripcion, '');
+    -- Use empty string if description is NULL
+    IF p_descripcion IS NULL THEN
+        SET p_descripcion = '';
+    END IF;
 
-    -- Verificar si ya existe un rol con el mismo nombre (ignorando mayúsculas/minúsculas)
-    IF EXISTS (SELECT 1 FROM Roles WHERE LOWER(nombre_rol) = LOWER(TRIM(p_nombre_rol))) THEN
+    -- Check if role already exists (case-sensitive)
+    IF EXISTS (SELECT 1 FROM Roles WHERE nombre_rol = p_nombre_rol) THEN
         SIGNAL SQLSTATE '45000' 
         SET MESSAGE_TEXT = 'Error: Ya existe un rol con este nombre';
     END IF;
 
-    -- Insertar el nuevo rol en la tabla Roles
+    -- Insert new role
     INSERT INTO Roles (nombre_rol, descripcion)
-    VALUES (TRIM(p_nombre_rol), p_descripcion);
+    VALUES (p_nombre_rol, p_descripcion);
     
-    -- Retornar el ID del rol recién insertado
     SELECT LAST_INSERT_ID() AS cod_rol;
 END $$
-
-DELIMITER ;
-
 
 -- Listar todos los roles
 CREATE PROCEDURE IF NOT EXISTS sp_listar_roles()
@@ -136,13 +137,15 @@ BEGIN
         SET MESSAGE_TEXT = 'Error: Código de rol inválido';
     END IF;
 
-    IF p_nombre_rol IS NULL OR TRIM(p_nombre_rol) = '' THEN
+    IF p_nombre_rol IS NULL OR p_nombre_rol = '' THEN
         SIGNAL SQLSTATE '45000' 
         SET MESSAGE_TEXT = 'Error: El nombre del rol no puede ser nulo o vacío';
     END IF;
 
-    -- Sanitize description if NULL
-    SET p_descripcion = COALESCE(p_descripcion, '');
+    -- Use empty string if description is NULL
+    IF p_descripcion IS NULL THEN
+        SET p_descripcion = '';
+    END IF;
 
     -- Check if role exists
     IF NOT EXISTS (SELECT 1 FROM Roles WHERE cod_rol = p_cod_rol) THEN
@@ -150,15 +153,15 @@ BEGIN
         SET MESSAGE_TEXT = 'Error: El rol especificado no existe';
     END IF;
 
-    -- Check if new role name conflicts with existing roles (case-insensitive)
+    -- Check if new role name conflicts (case-sensitive)
     IF EXISTS (SELECT 1 FROM Roles 
-               WHERE LOWER(nombre_rol) = LOWER(TRIM(p_nombre_rol)) AND cod_rol != p_cod_rol) THEN
+               WHERE nombre_rol = p_nombre_rol AND cod_rol != p_cod_rol) THEN
         SIGNAL SQLSTATE '45000' 
         SET MESSAGE_TEXT = 'Error: Ya existe otro rol con este nombre';
     END IF;
 
     UPDATE Roles 
-    SET nombre_rol = TRIM(p_nombre_rol), 
+    SET nombre_rol = p_nombre_rol, 
         descripcion = p_descripcion
     WHERE cod_rol = p_cod_rol;
     
