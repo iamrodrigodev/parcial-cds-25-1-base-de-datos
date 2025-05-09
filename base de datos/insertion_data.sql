@@ -28,7 +28,7 @@ INSERT INTO Personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nac
  ('90560357', 'Otes', 'Sabathier', 'Bartleet', '1984-05-31', '2025-05-09') ,
  ('02333727', 'Carine', 'Trevers', 'Van''t Hoff', '1988-07-17', '2025-05-09') ,
  ('19887857', 'Maritsa', 'Bilbrey', 'Anan', '1999-11-06', '2025-05-09') ,
- ('70649355', 'Courtenay', 'Kroin', 'Pringuer', '1971-04-15', '2025-05-09') ,
+ ('73111677', 'Courtenay', 'Kroin', 'Pringuer', '1971-04-15', '2025-05-09') ,
  ('07689801', 'Moina', 'Baltrushaitis', 'Burgwyn', '1995-10-06', '2025-05-09') ,
  ('39246922', 'Tawnya', 'Clackson', 'Canas', '1999-09-09', '2025-05-09') ,
  ('47663204', 'Latashia', 'Leyband', 'Sessions', '1972-05-13', '2025-05-09') ,
@@ -185,7 +185,7 @@ INSERT INTO Telefonos_Personas (telefono, dni) VALUES
 ('991234567', '69414801'),
 ('992345678', '70069518'),
 ('993456789', '70290353'),
-('994567890', '70649355'),
+('994567890', '73111677'),
 ('995678901', '70876393'),
 ('996789012', '72774212'),
 ('997890123', '73770381'),
@@ -279,7 +279,7 @@ INSERT INTO Direcciones_Personas (dni, direccion) VALUES
 ('69414801', 'Calle de Fernández de los Ríos 45, 3ºC, 28015 Madrid'),
 ('70069518', 'Calle de Isaac Peral 34, 4ºD, 28015 Madrid'),
 ('70290353', 'Calle de la Salle 56, 5ºA, 28023 Madrid'),
-('70649355', 'Avenida de los Poblados 23, 2ºB, 28025 Madrid'),
+('73111677', 'Avenida de los Poblados 23, 2ºB, 28025 Madrid'),
 ('70876393', 'Calle de Alcorcón 45, 3ºC, 28024 Madrid'),
 ('72774212', 'Calle de Carabanchel 34, 4ºD, 28025 Madrid'),
 ('73770381', 'Calle de Usera 56, 5ºA, 28026 Madrid'),
@@ -314,7 +314,7 @@ INSERT INTO Direcciones_Personas (dni, direccion) VALUES
 
 
 INSERT INTO Empleados (dni, estado, contraseña, es_administrador) VALUES
-('70649355', 'activo', 'ABC1', FALSE),
+('73111677', 'activo', 'admin', FALSE),
 ('83018047', 'activo', 'ABC2', FALSE),
 ('86927207', 'activo', 'ABC3', FALSE),
 ('88389797', 'activo', 'ABC4', FALSE),
@@ -363,7 +363,7 @@ INSERT INTO Vendedores (cod_empleado, cod_rol) VALUES
 (13, 12), -- Empleado 13 (53964100) como Especialista en Ventas (rol 12)
 (14, 12), -- Empleado 14 (54167291) como Especialista en Ventas (rol 12)
 (15, 12), -- Empleado 15 (54389505) como Especialista en Ventas (rol 12)
-(1, 11);  -- Empleado 1 (70649355) como Jefe de Ventas (rol 11)
+(1, 11);  -- Empleado 1 (73111677) como Jefe de Ventas (rol 11)
 
 
 
