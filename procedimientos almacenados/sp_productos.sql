@@ -40,7 +40,7 @@ BEGIN
         SET MESSAGE_TEXT = 'El stock debe ser mayor que 0';
     END IF;
 
-    IF p_precio_venta IS NULL OR p_precio_venta > p_precio_compra THEN
+    IF p_precio_venta IS NULL OR p_precio_venta < p_precio_compra THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'El precio de venta debe ser mayor al precio de compra';
     END IF;
@@ -248,7 +248,7 @@ BEGIN
         SET MESSAGE_TEXT = 'El precio de venta debe ser mayor que 0';
     END IF;
 
-    IF p_precio_venta IS NULL OR p_precio_venta > p_precio_compra THEN
+    IF p_precio_venta IS NULL OR p_precio_venta < p_precio_compra THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'El precio de venta debe ser mayor al precio de compra';
     END IF;
@@ -335,27 +335,29 @@ BEGIN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El producto ya está marcado como agotado';
     END IF;
 
-    -- Actualizar el estado del producto a "agotado"
+    -- Actualizar el estado del producto a "agotado" y el stock a 0
     UPDATE Productos
-    SET estado = 'agotado'
+    SET estado = 'agotado', stock = 0
     WHERE cod_producto = p_cod_producto;
 END $$
 DELIMITER ;
 
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS ActualizarStockProducto(
-    IN p_cod_producto INT,
-    IN p_nuevo_stock INT 
+    IN p_cod_producto INT,  
+    IN p_nuevo_stock INT     
 )
 BEGIN
     -- Verificar si el producto con el cod_producto existe
     DECLARE v_producto_count INT;
+    DECLARE v_estado_actual VARCHAR(50);
 
     -- Validar que el nuevo stock no sea negativo
     IF p_nuevo_stock < 0 THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El stock no puede ser negativo';
     END IF;
 
+    -- Verificar si el producto existe
     SELECT COUNT(*) INTO v_producto_count
     FROM Productos
     WHERE cod_producto = p_cod_producto;
@@ -363,6 +365,18 @@ BEGIN
     -- Si no existe el producto, lanzar un error
     IF v_producto_count = 0 THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se encontró un producto con ese ID';
+    END IF;
+
+    -- Obtener el estado actual del producto
+    SELECT estado INTO v_estado_actual
+    FROM Productos
+    WHERE cod_producto = p_cod_producto;
+
+    -- Si el estado es "agotado" y el nuevo stock es mayor que 0, actualizar el estado a "disponible"
+    IF v_estado_actual = 'agotado' AND p_nuevo_stock > 0 THEN
+        UPDATE Productos
+        SET estado = 'disponible'
+        WHERE cod_producto = p_cod_producto;
     END IF;
 
     -- Actualizar el stock del producto
