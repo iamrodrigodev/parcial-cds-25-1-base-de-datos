@@ -179,27 +179,22 @@ CREATE PROCEDURE IF NOT EXISTS BuscarProductoPorNombre(
     IN p_nombre_producto VARCHAR(100)
 )
 BEGIN
-    DECLARE v_producto_count INT;
-
     IF p_nombre_producto IS NULL OR p_nombre_producto = '' THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El nombre del producto no puede estar vacío';
     END IF;
 
-    SELECT COUNT(*) INTO v_producto_count
-    FROM Productos
-    WHERE nombre = p_nombre_producto;
-
-    IF v_producto_count = 0 THEN
+    IF NOT EXISTS (
+        SELECT 1 FROM Productos WHERE nombre LIKE CONCAT('%', p_nombre_producto, '%')
+    ) THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se encontró un producto con ese nombre';
     END IF;
 
     SELECT cod_producto, nombre, descripcion, precio_compra, precio_venta, stock, estado, fecha_registro
     FROM Productos
-    WHERE nombre = p_nombre_producto;
+    WHERE nombre LIKE CONCAT('%', p_nombre_producto, '%');
 END $$
 
 DELIMITER ;
-
 
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS ObtenerStockPorId(
