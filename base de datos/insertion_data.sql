@@ -24,7 +24,7 @@ INSERT INTO Personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nac
  ('28053157', 'Eyde', 'Isaac', 'Piggens', '1973-05-23', '2025-05-09') ,
  ('54167291', 'Margaret', 'Davinet', 'Abazi', '1972-03-27', '2025-05-09') ,
  ('11540457', 'Lusa', 'Seaward', 'Fake', '1999-04-11', '2025-05-09') ,
- ('77684243', 'L ,urette', 'Wille', 'Gleave', '1982-10-15', '2025-05-09') ,
+ ('77684243', 'Lurette', 'Wille', 'Gleave', '1982-10-15', '2025-05-09') ,
  ('90560357', 'Otes', 'Sabathier', 'Bartleet', '1984-05-31', '2025-05-09') ,
  ('02333727', 'Carine', 'Trevers', 'Van''t Hoff', '1988-07-17', '2025-05-09') ,
  ('19887857', 'Maritsa', 'Bilbrey', 'Anan', '1999-11-06', '2025-05-09') ,
@@ -97,7 +97,7 @@ INSERT INTO Personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nac
  ('00386246', 'Leshia', 'Gladdolph', 'Rhodus', '1990-04-03', '2025-05-09') ,
  ('61639057', 'Cleveland', 'Kimmel', 'Giggs', '1982-02-14', '2025-05-09') ,
  ('83018047', 'Skipper', 'Harrowell', 'Alner', '2002-12-15', '2025-05-09') ,
- ('05254216', 'Daniella', 'Ivchenko', 'Bovis', '1977-10-13', '2025-05-09') ,
+ ('05254216', 'Daniella', 'Ivchenko', 'Bovis', '1977-10-13', '2025-05-09') 
 
 
 
@@ -202,7 +202,7 @@ INSERT INTO Telefonos_Personas (telefono, dni) VALUES
 ('920012345', '79117111'),
 ('921123456', '81149737'),
 ('922234567', '81201095'),
-('923345678', '82135923') ,
+('923345678', '82135923') 
 
 
 
