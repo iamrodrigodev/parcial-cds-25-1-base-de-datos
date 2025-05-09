@@ -1,171 +1,132 @@
 USE FabiaNatura;
--- Stored Procedures for Roles Management
 
+-- POST Roles --
 DELIMITER $$
-
--- Insertar un nuevo rol
-CREATE PROCEDURE IF NOT EXISTS sp_insertar_rol(
+CREATE PROCEDURE AgregarRol(
     IN p_nombre_rol VARCHAR(50),
     IN p_descripcion TEXT
 )
 BEGIN
-    -- Validate input parameters
-    IF p_nombre_rol IS NULL OR p_nombre_rol = '' THEN
+    -- Verificar si el nombre del rol está vacío
+    IF p_nombre_rol = '' THEN
         SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: El nombre del rol no puede ser nulo o vacío';
+        SET MESSAGE_TEXT = 'El nombre del rol no puede ser nulo o vacío';
     END IF;
 
-    -- Use empty string if description is NULL
-    IF p_descripcion IS NULL THEN
-        SET p_descripcion = '';
-    END IF;
-
-    -- Check if role already exists (case-sensitive)
+    -- Verificar si ya existe un rol con el mismo nombre
     IF EXISTS (SELECT 1 FROM Roles WHERE nombre_rol = p_nombre_rol) THEN
         SIGNAL SQLSTATE '45000' 
         SET MESSAGE_TEXT = 'Error: Ya existe un rol con este nombre';
     END IF;
 
-    -- Insert new role
+    -- Insertar el nuevo rol en la tabla Roles
     INSERT INTO Roles (nombre_rol, descripcion)
     VALUES (p_nombre_rol, p_descripcion);
-    
-    SELECT LAST_INSERT_ID() AS cod_rol;
 END $$
+DELIMITER ;
 
--- Listar todos los roles
-CREATE PROCEDURE IF NOT EXISTS sp_listar_roles()
+-- GET Roles --
+DELIMITER $$
+CREATE PROCEDURE ObtenerTodosRoles()
 BEGIN
-    DECLARE v_total_roles INT;
+    -- Verificar si existen roles en la tabla Roles
+    DECLARE v_roles_count INT;
 
-    -- Count total number of roles
-    SELECT COUNT(*) INTO v_total_roles FROM Roles;
+    -- Contar el número de roles en la tabla
+    SELECT COUNT(*) INTO v_roles_count
+    FROM Roles;
 
-    -- Check if no roles exist
-    IF v_total_roles = 0 THEN
-        SIGNAL SQLSTATE '02000'
-        SET MESSAGE_TEXT = 'Información: No hay roles registrados en el sistema';
+    -- Si no existen roles, lanzar un error
+    IF v_roles_count = 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No existen roles en la base de datos';
     END IF;
 
-    -- List all roles
-    SELECT 
-        *, 
-        v_total_roles AS total_roles 
-    FROM Roles 
-    ORDER BY nombre_rol;
+    -- Si existen roles, obtener todos los roles
+    SELECT cod_rol, nombre_rol, descripcion
+    FROM Roles;   
 END $$
+DELIMITER ;
 
--- Obtener un rol por su ID específico
-CREATE PROCEDURE IF NOT EXISTS sp_obtener_rol_por_id(
+DELIMITER $$
+CREATE PROCEDURE ObtenerRolPorId(
     IN p_cod_rol INT
 )
 BEGIN
-    -- Validate input parameter
-    IF p_cod_rol IS NULL OR p_cod_rol <= 0 THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Código de rol inválido';
-    END IF;
+    -- Verificar si el rol con el ID proporcionado existe
+    DECLARE v_rol_count INT;
 
-    -- Check if role exists
-    IF NOT EXISTS (SELECT 1 FROM Roles WHERE cod_rol = p_cod_rol) THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'El rol especificado no existe';
-    END IF;
-
-    -- Retrieve role details
-    SELECT * FROM Roles 
+    SELECT COUNT(*) INTO v_rol_count
+    FROM Roles
     WHERE cod_rol = p_cod_rol;
-END $$
 
--- Mostrar todos los vendedores de un rol específico
-CREATE PROCEDURE IF NOT EXISTS sp_listar_vendedores_por_rol(
+    -- Si no existe el rol, lanzar un error
+    IF v_rol_count = 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se encontró un rol con ese ID';
+    END IF;
+
+    -- Si existe el rol, obtener la información del rol
+    SELECT cod_rol, nombre_rol, descripcion
+    FROM Roles
+    WHERE cod_rol = p_cod_rol; 
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE ObtenerEmpleadosPorRol(
     IN p_cod_rol INT
 )
 BEGIN
-    DECLARE v_nombre_rol VARCHAR(50);
+    -- Verificar si existen empleados con el rol proporcionado
+    DECLARE v_empleados_count INT;
 
-    -- Validate input parameter
-    IF p_cod_rol IS NULL OR p_cod_rol <= 0 THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: Código de rol inválido';
+    SELECT COUNT(*) INTO v_empleados_count
+    FROM Vendedores v
+    JOIN Empleados e ON v.cod_empleado = e.cod_empleado
+    WHERE v.cod_rol = p_cod_rol;
+
+    -- Si no hay empleados asociados al rol, lanzar un error
+    IF v_empleados_count = 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No existen empleados con este rol';
     END IF;
 
-    -- Check if role exists and get role name
-    SELECT nombre_rol INTO v_nombre_rol 
-    FROM Roles 
-    WHERE cod_rol = p_cod_rol;
-
-    -- Check if role exists (will raise an error if not found)
-    IF v_nombre_rol IS NULL THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: El rol especificado no existe';
-    END IF;
-
-    -- Check if any vendors exist for this role
-    IF NOT EXISTS (SELECT 1 FROM Vendedores WHERE rol = v_nombre_rol) THEN
-        SIGNAL SQLSTATE '02000' 
-        SET MESSAGE_TEXT = 'Información: No hay vendedores asignados a este rol';
-    END IF;
-
-    SELECT 
-        v.cod_vendedor,
-        p.dni,
-        p.nombre,
-        p.apellido_paterno,
-        p.apellido_materno,
-        v.rol
-    FROM 
-        Vendedores v
-    JOIN 
-        Empleados e ON v.cod_empleado = e.cod_empleado
-    JOIN 
-        Personas p ON e.dni = p.dni
-    WHERE 
-        v.rol = v_nombre_rol;
+    -- Si existen empleados, obtener la lista de empleados asociados con el rol
+    SELECT e.cod_empleado, e.dni, e.estado, e.es_administrador
+    FROM Empleados e
+    JOIN Vendedores v ON e.cod_empleado = v.cod_empleado
+    WHERE v.cod_rol = p_cod_rol;
 END $$
+DELIMITER ;
 
--- Actualizar un rol existente
-CREATE PROCEDURE IF NOT EXISTS sp_actualizar_rol(
-    IN p_cod_rol INT,
-    IN p_nombre_rol VARCHAR(50),
-    IN p_descripcion TEXT
+-- PUT Roles --
+DELIMITER $$
+CREATE PROCEDURE ActualizarRol(
+    IN p_cod_rol INT,                -- ID del rol que se desea actualizar
+    IN p_nuevo_nombre_rol VARCHAR(50),  -- Nuevo nombre para el rol
+    IN p_nueva_descripcion TEXT       -- Nueva descripción del rol
 )
 BEGIN
-    -- Validate input parameters
-    IF p_cod_rol IS NULL OR p_cod_rol <= 0 THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: Código de rol inválido';
+    -- Declarar las variables al principio
+    DECLARE v_rol_count INT;
+
+    -- Validar que el nuevo nombre del rol no esté vacío
+    IF p_nuevo_nombre_rol IS NULL OR p_nuevo_nombre_rol = '' THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Error: El nombre del rol no puede estar vacío';
     END IF;
 
-    IF p_nombre_rol IS NULL OR p_nombre_rol = '' THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: El nombre del rol no puede ser nulo o vacío';
-    END IF;
-
-    -- Use empty string if description is NULL
-    IF p_descripcion IS NULL THEN
-        SET p_descripcion = '';
-    END IF;
-
-    -- Check if role exists
-    IF NOT EXISTS (SELECT 1 FROM Roles WHERE cod_rol = p_cod_rol) THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: El rol especificado no existe';
-    END IF;
-
-    -- Check if new role name conflicts (case-sensitive)
-    IF EXISTS (SELECT 1 FROM Roles 
-               WHERE nombre_rol = p_nombre_rol AND cod_rol != p_cod_rol) THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Error: Ya existe otro rol con este nombre';
-    END IF;
-
-    UPDATE Roles 
-    SET nombre_rol = p_nombre_rol, 
-        descripcion = p_descripcion
+    -- Verificar si el rol con el cod_rol existe
+    SELECT COUNT(*) INTO v_rol_count
+    FROM Roles
     WHERE cod_rol = p_cod_rol;
-    
-    SELECT ROW_COUNT() AS filas_actualizadas;
-END $$
 
+    -- Si no existe el rol, lanzar un error
+    IF v_rol_count = 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Error: No se encontró el rol con ese ID';
+    END IF;
+
+    -- Actualizar el nombre y descripción del rol
+    UPDATE Roles
+    SET nombre_rol = p_nuevo_nombre_rol,
+        descripcion = p_nueva_descripcion
+    WHERE cod_rol = p_cod_rol;
+END $$
 DELIMITER ;
