@@ -340,17 +340,17 @@ INSERT INTO Empleados (dni, estado, contraseña, es_administrador) VALUES
 
 INSERT INTO Roles (nombre_rol, descripcion) VALUES
 ('Administrador', 'Responsable de la gestión global del sistema, usuarios y configuración'),
-('Gerente de Tienda', 'Encargado de la operación diaria de la tienda y supervisión del personal'),
-('Cajero', 'Atiende a clientes en caja, procesa pagos y gestiona transacciones'),
-('Jefe de Ventas', 'Coordina el equipo comercial y estrategias para alcanzar objetivos de venta'),
-('Especialista en Ventas', 'Enfocado en alcanzar metas comerciales y fidelizar clientes'),
-('Asesor de Productos Naturales', 'Experto en productos que brinda asesoramiento a clientes'),
-('Reponedor', 'Encargado de mantener el inventario en estantes y almacén organizado'),
-('Compras', 'Responsable de la adquisición de productos y gestión con proveedores'),
-('Marketing', 'Encargado de promociones, redes sociales y estrategias de venta'),
-('Atención al Cliente', 'Resuelve consultas, quejas y gestiona programas de fidelización'),
-('Técnico en Nutrición', 'Profesional calificado para dar recomendaciones nutricionales'),
-('Limpieza y Mantenimiento', 'Responsable de la higiene y mantenimiento del local');
+('Gerente de Boutique', 'Encargado de la operación diaria de la tienda y supervisión del personal'),
+('Asesor de Ventas de Cosméticos', 'Recomendaciones y asesoramiento a clientes sobre productos cosméticos'),
+('Vendedor de Belleza', 'Vende productos y ayuda a los clientes a elegir artículos adecuados'),
+('Especialista en Cuidado de la Piel', 'Asesora sobre rutinas y productos para el cuidado facial y corporal'),
+('Asesor en Maquillaje', 'Brinda recomendaciones y demostraciones de productos de maquillaje'),
+('Reponedor de Estanterías', 'Mantiene el stock de productos en las estanterías y almacén'),
+('Compras de Cosméticos', 'Gestiona la adquisición de productos y relaciones con proveedores'),
+('Marketing de Belleza', 'Diseña promociones, administra las redes sociales y estrategias de venta'),
+('Atención al Cliente', 'Resuelve dudas, quejas y gestiona programas de fidelización'),
+('Técnico en Cosmética', 'Profesional que brinda recomendaciones personalizadas y análisis de piel'),
+('Limpieza y Mantenimiento', 'Encargado de la higiene y cuidado del local y sus instalaciones');
 
 
 
@@ -369,16 +369,16 @@ INSERT INTO Vendedores (cod_empleado, cod_rol) VALUES
 
 
 INSERT INTO Especialidades (nombre_especialidad, descripcion) VALUES
-('Nutrición Holística', 'Enfoque integral de la nutrición considerando cuerpo, mente y emociones'),
-('Fitoterapia', 'Uso terapéutico de plantas medicinales y sus derivados'),
-('Aromaterapia', 'Aplicación de aceites esenciales para bienestar físico y emocional'),
-('Cosmética Natural', 'Productos de cuidado personal libres de químicos sintéticos'),
-('Alimentación Vegana', 'Asesoramiento en dietas basadas exclusivamente en plantas'),
-('Suplementos Nutricionales', 'Conocimiento especializado en vitaminas, minerales y complementos'),
-('Productos Sin Gluten', 'Especialización en alimentos para celíacos y sensibles al gluten'),
-('Medicina Ayurveda', 'Terapias basadas en el sistema tradicional de medicina india'),
-('Superalimentos', 'Conocimiento de alimentos con alta densidad nutricional'),
-('Bienestar Digestivo', 'Especialización en productos para salud intestinal y digestiva');
+('Dermatología Cosmética', 'Tratamientos y productos para mejorar la piel y apariencia facial'),
+('Peelings Químicos', 'Procedimientos para exfoliar y rejuvenecer la piel'),
+('Microdermoabrasión', 'Técnica para renovar la piel mediante exfoliación mecánica'),
+('Estética Facial', 'Tratamientos y cuidados específicos para la piel del rostro'),
+('Cuidado Antiedad', 'Productos y terapias enfocadas en reducir signos de envejecimiento'),
+('Lifting Facial No Invasivo', 'Técnicas para elevar y definir contornos faciales sin cirugía'),
+('Maquillaje Profesional', 'Técnicas avanzadas para maquillaje de día, noche y eventos'),
+('Depilación Laser', 'Procedimientos para eliminar vello de forma definitiva'),
+('Tricología', 'Especialización en salud capilar y tratamientos del cabello'),
+('Cuidado Corporal', 'Productos y técnicas para la estética y bienestar del cuerpo');
 
 
 
@@ -397,14 +397,14 @@ INSERT INTO Asesores (cod_empleado, experiencia) VALUES
 
 
 INSERT INTO Asesores_Especialidades (cod_asesor, cod_especialidad) VALUES
-(1, 2),   -- Asesor 1 (Fitoterapia)
+(1, 1),   -- Asesor 1 (Dermatología Cosmética)
 (2, 4),   -- Asesor 2 (Cosmética Natural)
-(3, 1),   -- Asesor 3 (Nutrición Holística)
-(4, 5),   -- Asesor 4 (Alimentación Vegana)
-(5, 8),   -- Asesor 5 (Medicina Ayurveda)
-(6, 3),   -- Asesor 6 (Aromaterapia)
-(7, 10),  -- Asesor 7 (Bienestar Digestivo)
-(8, 7);   -- Asesor 8 (Productos Sin Gluten)
+(3, 2),   -- Asesor 3 (Peelings Químicos)
+(4, 3),   -- Asesor 4 (Microdermoabrasión)
+(5, 9),   -- Asesor 5 (Tricología)
+(6, 6),   -- Asesor 6 (Estética Facial)
+(7, 10),  -- Asesor 7 (Cuidado Corporal)
+(8, 5);   -- Asesor 8 (Cuidado Antiedad)
 
 
 
@@ -499,57 +499,56 @@ INSERT INTO Contratos (cod_empleado, fecha_inicio, fecha_fin, salario_men, obser
 (2, '2021-05-10', '2023-05-10', 1650.00, 'Contrato temporal 2 años - Especialista en Ventas', 'inactivo'),
 (3, '2022-01-20', NULL, 1750.00, 'Contrato indefinido - Gerente de Tienda', 'activo'),
 (4, '2021-11-15', '2024-11-15', 1950.00, 'Contrato temporal 3 años - Administrador', 'activo'),
-(5, '2023-02-01', NULL, 1550.00, 'Contrato indefinido - Asesor', 'activo'),
-(6, '2020-08-12', NULL, 1600.00, 'Contrato indefinido - Técnico en Nutrición', 'activo'),
+(5, '2023-02-01', NULL, 1550.00, 'Contrato indefinido - Asesor en Cosméticos', 'activo'),
+(6, '2020-08-12', NULL, 1600.00, 'Contrato indefinido - Técnico en Cosmética', 'activo'),
 (7, '2022-07-05', '2023-07-05', 1500.00, 'Contrato temporal 1 año - Reponedor', 'inactivo'),
 (8, '2023-01-10', NULL, 1450.00, 'Contrato indefinido - Cajero', 'activo'),
 (9, '2019-09-03', NULL, 2200.00, 'Contrato indefinido - Gerente Regional', 'activo'),
-(10, '2022-04-18', NULL, 1700.00, 'Contrato indefinido - Especialista en Ventas', 'activo'),
+(10, '2022-04-18', NULL, 1700.00, 'Contrato indefinido - Asesor de Belleza y Ventas', 'activo'),
 (11, '2021-12-01', '2024-12-01', 1650.00, 'Contrato temporal 3 años - Compras', 'activo'),
-(12, '2023-03-22', NULL, 1600.00, 'Contrato indefinido - Marketing', 'activo'),
+(12, '2023-03-22', NULL, 1600.00, 'Contrato indefinido - Responsable de Marketing', 'activo'),
 (13, '2020-10-05', NULL, 1850.00, 'Contrato indefinido - Jefe de Ventas', 'activo'),
 (14, '2022-06-15', '2023-06-15', 1550.00, 'Contrato temporal 1 año - Atención al Cliente', 'inactivo'),
-(15, '2021-07-20', NULL, 1750.00, 'Contrato indefinido - Asesor Senior', 'activo'),
+(15, '2021-07-20', NULL, 1750.00, 'Contrato indefinido - Asesor Senior en Cosmética', 'activo'),
 (16, '2023-04-01', NULL, 1500.00, 'Contrato indefinido - Limpieza', 'activo'),
 (17, '2020-12-10', NULL, 1900.00, 'Contrato indefinido - Coordinador de Ventas', 'activo'),
-(18, '2022-09-05', '2025-09-05', 1650.00, 'Contrato temporal 3 años - Asesor', 'activo'),
+(18, '2022-09-05', '2025-09-05', 1650.00, 'Contrato temporal 3 años - Asesor en Belleza', 'activo'),
 (19, '2021-04-15', NULL, 2100.00, 'Contrato indefinido - Subgerente', 'activo'),
-(20, '2023-02-28', NULL, 1600.00, 'Contrato indefinido - Especialista en Productos', 'activo');
-
+(20, '2023-02-28', NULL, 1600.00, 'Contrato indefinido - Especialista en Productos Cosméticos', 'activo');
 
 
 
 INSERT INTO Proveedores (ruc, nombre) VALUES
-('10456789012', 'NaturaLife Distribuciones'),
-('20432109876', 'EcoVerde Productos Orgánicos'),
-('10567890123', 'BioSalud Suplementos'),
-('20456789013', 'Herbolaria Andina'),
-('10678901234', 'Amazonia Natural'),
-('20567890124', 'SuperFoods Perú'),
-('10789012345', 'NutriVida Integral'),
+('10456789012', 'NaturaLife Cosméticos'),
+('20432109876', 'EcoVerde Cosmética Orgánica'),
+('10567890123', 'BioSalud Cosmética Natural'),
+('20456789013', 'Herbolaria & Cosméticos Andinos'),
+('10678901234', 'Amazonia Natural Cosméticos'),
+('20567890124', 'SuperFoods & Cosméticos Perú'),
+('10789012345', 'NutriVida Cosmética y Belleza'),
 ('20678901235', 'Cosmética Pura'),
-('10890123456', 'Vegano Delights'),
-('20789012346', 'AromaTerapia SAC'),
-('10901234567', 'GlutenFree Perú'),
-('20890123457', 'Esencias Florales'),
-('10123456789', 'PowerGreen Alimentos'),
-('20901234568', 'Mieles del Valle'),
-('10234567890', 'Quinua Real'),
-('20123456789', 'Hierbas Medicinales SAC'),
-('10345678901', 'SuperSemillas'),
+('10890123456', 'Vegano Delights Cosméticos'),
+('20789012346', 'AromaTerapia y Cosmética SAC'),
+('10901234567', 'GlutenFree Cosméticos Perú'),
+('20890123457', 'Esencias Florales & Belleza'),
+('10123456789', 'PowerGreen Cosméticos Naturales'),
+('20901234568', 'Mieles y Cosméticos del Valle'),
+('10234567890', 'Quinua Real Cosmética'),
+('20123456789', 'Hierbas Medicinales y Cosméticos SAC'),
+('10345678901', 'SuperSemillas Cosméticas'),
 ('20234567890', 'Aceites Esenciales Premium'),
-('10456789014', 'Frutos del Bosque'),
-('20345678901', 'Té & Bienestar'),
-('10567890125', 'Proteína Vegetal SAC'),
-('20456789015', 'Raíces Saludables'),
-('10678901236', 'Dulce Natural'),
-('20567890126', 'Especias del Mundo'),
-('10789012347', 'Cacao Orgánico Perú'),
-('20678901237', 'Maca Power'),
-('10890123458', 'Stevia Natural'),
-('20789012348', 'Quinoa Gold'),
-('10901234569', 'Algas Nutritivas'),
-('20890123459', 'SuperGranos Andinos');
+('10456789014', 'Frutos del Bosque Cosméticos'),
+('20345678901', 'Té & Bienestar Cosmético'),
+('10567890125', 'Proteína Vegetal y Cosmética SAC'),
+('20456789015', 'Raíces Saludables Cosméticos'),
+('10678901236', 'Dulce Natural Cosmética'),
+('20567890126', 'Especias y Cosméticos del Mundo'),
+('10789012347', 'Cacao Orgánico y Belleza Perú'),
+('20678901237', 'Maca Power Cosméticos'),
+('10890123458', 'Stevia Natural Cosméticos'),
+('20789012348', 'Quinoa Gold Cosméticos'),
+('10901234569', 'Algas Nutritivas y Belleza'),
+('20890123459', 'SuperGranos & Cosméticos Andinos');
 
 
 
@@ -590,57 +589,56 @@ INSERT INTO Telefonos_Proveedores (ruc, telefono) VALUES
 
 
 INSERT INTO Categorias (nombre, descripcion) VALUES
-('Suplementos Nutricionales', 'Vitaminas, minerales y complementos dietéticos para el bienestar general'),
-('Plantas Medicinales', 'Hierbas y preparados herbales para apoyo terapéutico natural'),
-('Cosmética Natural', 'Productos de cuidado personal libres de químicos agresivos'),
-('Alimentos Orgánicos', 'Productos alimenticios cultivados sin pesticidas ni fertilizantes sintéticos'),
-('Superalimentos', 'Alimentos con alta densidad nutricional y propiedades saludables'),
-('Productos Sin Gluten', 'Alternativas alimenticias para personas con sensibilidad al gluten'),
-('Aromaterapia', 'Aceites esenciales y productos para bienestar emocional'),
-('Cuidado Digestivo', 'Productos que apoyan la salud intestinal y digestiva'),
-('Nutrición Deportiva', 'Suplementos y alimentos para atletas y personas activas'),
-('Productos Veganos', 'Alternativas 100% vegetales sin ingredientes de origen animal'),
+('Cosmética Natural', 'Productos de cuidado personal libres de químicos agresivos y sustentables'),
+('Cuidado de la Piel', 'Cremas, lociones y tratamientos dermatológicos naturales'),
 ('Cuidado Capilar Natural', 'Shampoos, acondicionadores y tratamientos con ingredientes naturales'),
-('Infusiones y Tés', 'Bebidas saludables a base de hierbas y plantas medicinales'),
-('Productos Apícolas', 'Miel, propóleo y derivados de la colmena con propiedades beneficiosas'),
-('Cuidado de la Piel', 'Crema, lociones y tratamientos dermatológicos naturales'),
-('Hogar Ecológico', 'Productos de limpieza y cuidado del hogar con ingredientes naturales');
+('Aromaterapia', 'Aceites esenciales y productos para bienestar emocional y corporal'),
+('Productos Varoniales', 'Línea de productos cosméticos para hombres'),
+('Maquillaje Natural', 'Maquillaje con ingredientes naturales y seguros para la piel'),
+('Cuidado de Manos y Uñas', 'Esmaltes, cremas y tratamientos para manos y uñas'),
+('Productos para Acné', 'Tratamientos naturales y efectivos para piel propensa al acné'),
+('Cuidado Corporal', 'Lociones, scrub y tratamientos corporales naturales'),
+('Higiene Bucal Natural', 'Pastas dentales y enjuagues bucales con ingredientes naturales'),
+('Protección Solar Natural', 'Ingredientes naturales para protección SPF efectiva'),
+('Cuidado Labial', 'Barras, labiales y tratamientos labiales con ingredientes naturales'),
+('Cuidado de los Ojos', 'Productos específicos para el contorno y cuidado de los ojos'),
+('Infusiones y Tónicos', 'Tónicos faciales y sprays refrescantes naturales'),
+('Productos de Aromaterapia', 'Aceites esenciales y difusores para bienestar y relajación');
 
 
 
 
 INSERT INTO Lineas (ruc, nombre_linea) VALUES
-('10123456789', 'PowerGreen Línea Orgánica'),
-('10234567890', 'Quinua Real Premium'),
-('10345678901', 'SuperSemillas Nutritivas'),
-('10456789012', 'NaturaLife Suplementos'),
-('10456789014', 'Frutos del Bosque Selectos'),
-('10567890123', 'BioSalud Vitaminas'),
-('10567890125', 'Proteína Vegetal Plus'),
-('10678901234', 'Amazonia Superfoods'),
-('10678901236', 'Dulce Natural Stevia'),
-('10789012345', 'NutriVida Integral'),
-('10789012347', 'Cacao Orgánico Premium'),
-('10890123456', 'Vegano Delights Gourmet'),
-('10890123458', 'Stevia Natural Pura'),
-('10901234567', 'GlutenFree Bakery'),
-('10901234569', 'Algas Nutritivas Marinas'),
-('20123456789', 'Hierbas Medicinales Andinas'),
-('20234567890', 'Aceites Esenciales Terapéuticos'),
-('20345678901', 'Té & Bienestar Infusiones'),
-('20432109876', 'EcoVerde Orgánicos Premium'),
-('20456789013', 'Herbolaria Tradicional'),
-('20456789015', 'Raíces Saludables Nutritivas'),
-('20567890124', 'SuperFoods Energía'),
-('20567890126', 'Especias del Mundo Selectas'),
+('10123456789', 'PowerGreen Cosméticos Orgánicos'),
+('10234567890', 'Quinua Real Cosmética Premium'),
+('10345678901', 'SuperSemillas Belleza Nutritiva'),
+('10456789012', 'NaturaLife Cosmética Natural'),
+('10456789014', 'Frutos del Bosque Cosméticos Selectos'),
+('10567890123', 'BioSalud Línea de Belleza'),
+('10567890125', 'Proteína Vegetal y Cuidado de la Piel'),
+('10678901234', 'Amazonia Cosmética Natural'),
+('10678901236', 'Dulce Natural, Cuidado de la Piel'),
+('10789012345', 'NutriVida Belleza Integral'),
+('10789012347', 'Cacao Orgánico Cosméticos Premium'),
+('10890123456', 'Vegano Delights Cosméticos Gourmet'),
+('10890123458', 'Stevia Natural para Cuidado Personal'),
+('10901234567', 'GlutenFree Cosmética y Belleza'),
+('10901234569', 'Algas Nutritivas y Tratamientos Faciales'),
+('20123456789', 'Hierbas Medicinales y Belleza Andina'),
+('20234567890', 'Aceites Esenciales y Aromaterapia'),
+('20345678901', 'Té & Bienestar para Cuidado Facial'),
+('20432109876', 'EcoVerde Cosmética Orgánica'),
+('20456789013', 'Herbolaria y Productos de Belleza'),
+('20456789015', 'Raíces Saludables para la Piel'),
+('20567890124', 'SuperFoods Energía y Belleza'),
+('20567890126', 'Especias del Mundo y Cosmética Natural'),
 ('20678901235', 'Cosmética Pura Natural'),
-('20678901237', 'Maca Power Energética'),
-('20789012346', 'AromaTerapia Esencial'),
-('20789012348', 'Quinoa Gold Orgánica'),
-('20890123457', 'Esencias Florales Puras'),
-('20890123459', 'SuperGranos Andinos Tradicionales'),
-('20901234568', 'Mieles del Valle Naturales');
-
+('20678901237', 'Maca Power Energética y Belleza'),
+('20789012346', 'AromaTerapia y Bienestar Facial'),
+('20789012348', 'Quinoa Gold Orgánica para la Piel'),
+('20890123457', 'Esencias Florales Puras y Cuidado'),
+('20890123459', 'SuperGranos Andinos para Cosmética'),
+('20901234568', 'Mieles del Valle Naturales para Cuidado Facial');
 
 
 
