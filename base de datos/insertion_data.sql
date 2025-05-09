@@ -1,4 +1,4 @@
-INSERT TO personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) VALUES ('78451265', 'Elston', 'Kenderdine', 'Tailby', '2001-08-22', '2025-05-09') ,
+INSERT TO Personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) VALUES ('78451265', 'Elston', 'Kenderdine', 'Tailby', '2001-08-22', '2025-05-09') ,
  ('36129222', 'Elnar', 'Eastby', 'Deeves', '1982-09-27', '2025-05-09') ,
  ('97436487', 'Athena', 'Cousins', 'Halburton', '1983-02-27', '2025-05-09') ,
  ('05943635', 'Carena', 'Klees', 'Clemente', '1995-08-12', '2025-05-09') ,
@@ -102,7 +102,7 @@ INSERT TO personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacim
 
 
 
-INSERT INTO telefonos_personas (telefono, dni) VALUES
+INSERT INTO Telefonos_Personas (telefono, dni) VALUES
 ('912345678', '83018047'),
 ('913456789', '86927207'),
 ('914567890', '88389797'),
@@ -203,3 +203,8 @@ INSERT INTO telefonos_personas (telefono, dni) VALUES
 ('921123456', '81149737'),
 ('922234567', '81201095'),
 ('923345678', '82135923') ,
+
+
+
+
+
