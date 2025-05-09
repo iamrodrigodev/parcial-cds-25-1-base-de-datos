@@ -305,3 +305,69 @@ BEGIN
         cod_producto = p_cod_producto;
 END $$
 DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE IF NOT EXISTS ActualizarEstadoAgotado(
+    IN p_cod_producto INT
+)
+BEGIN
+    -- Verificar si el producto con el cod_producto existe
+    DECLARE v_producto_count INT;
+    DECLARE v_estado_actual VARCHAR(50);
+
+    -- Contar cuántos productos existen con ese ID
+    SELECT COUNT(*) INTO v_producto_count
+    FROM Productos
+    WHERE cod_producto = p_cod_producto;
+
+    -- Si no existe el producto, lanzar un error
+    IF v_producto_count = 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se encontró un producto con ese ID';
+    END IF;
+
+    -- Obtener el estado actual del producto
+    SELECT estado INTO v_estado_actual
+    FROM Productos
+    WHERE cod_producto = p_cod_producto;
+
+    -- Si el estado ya es "agotado", lanzar un error
+    IF v_estado_actual = 'agotado' THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El producto ya está marcado como agotado';
+    END IF;
+
+    -- Actualizar el estado del producto a "agotado"
+    UPDATE Productos
+    SET estado = 'agotado'
+    WHERE cod_producto = p_cod_producto;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE IF NOT EXISTS ActualizarStockProducto(
+    IN p_cod_producto INT,
+    IN p_nuevo_stock INT 
+)
+BEGIN
+    -- Validar que el nuevo stock no sea negativo
+    IF p_nuevo_stock < 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El stock no puede ser negativo';
+    END IF;
+
+    -- Verificar si el producto con el cod_producto existe
+    DECLARE v_producto_count INT;
+
+    SELECT COUNT(*) INTO v_producto_count
+    FROM Productos
+    WHERE cod_producto = p_cod_producto;
+
+    -- Si no existe el producto, lanzar un error
+    IF v_producto_count = 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se encontró un producto con ese ID';
+    END IF;
+
+    -- Actualizar el stock del producto
+    UPDATE Productos
+    SET stock = p_nuevo_stock
+    WHERE cod_producto = p_cod_producto;
+END $$
+DELIMITER ;
