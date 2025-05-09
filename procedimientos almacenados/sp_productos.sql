@@ -152,7 +152,7 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-CREATE PROCEDURE BuscarProductoPorNombre(
+CREATE PROCEDURE IF NOT EXISTS BuscarProductoPorNombre(
     IN p_nombre_producto VARCHAR(100)
 )
 BEGIN
@@ -180,17 +180,17 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-CREATE PROCEDURE ObtenerStockPorId(
+CREATE PROCEDURE IF NOT EXISTS ObtenerStockPorId(
     IN p_cod_producto INT
 )
 BEGIN
+    -- Verificar si existe un producto con el cod_producto proporcionado
+    DECLARE v_producto_count INT;
+
     -- Validar que el ID del producto no sea nulo ni inválido
     IF p_cod_producto IS NULL OR p_cod_producto <= 0 THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El ID del producto no puede ser nulo o inválido';
     END IF;
-
-    -- Verificar si existe un producto con el cod_producto proporcionado
-    DECLARE v_producto_count INT;
 
     SELECT COUNT(*) INTO v_producto_count
     FROM Productos
@@ -350,7 +350,7 @@ CREATE PROCEDURE IF NOT EXISTS ActualizarStockProducto(
 BEGIN
     -- Verificar si el producto con el cod_producto existe
     DECLARE v_producto_count INT;
-    
+
     -- Validar que el nuevo stock no sea negativo
     IF p_nuevo_stock < 0 THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El stock no puede ser negativo';
