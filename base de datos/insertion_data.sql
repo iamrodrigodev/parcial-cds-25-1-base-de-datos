@@ -1,4 +1,4 @@
-INSERT TO Personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) VALUES ('78451265', 'Elston', 'Kenderdine', 'Tailby', '2001-08-22', '2025-05-09') ,
+INSERT INTO Personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, fecha_registro) VALUES ('78451265', 'Elston', 'Kenderdine', 'Tailby', '2001-08-22', '2025-05-09') ,
  ('36129222', 'Elnar', 'Eastby', 'Deeves', '1982-09-27', '2025-05-09') ,
  ('97436487', 'Athena', 'Cousins', 'Halburton', '1983-02-27', '2025-05-09') ,
  ('05943635', 'Carena', 'Klees', 'Clemente', '1995-08-12', '2025-05-09') ,
