@@ -643,80 +643,81 @@ INSERT INTO Lineas (ruc, nombre_linea) VALUES
 
 
 INSERT INTO Productos (cod_categoria, cod_linea, nombre, descripcion, precio_compra, precio_venta, stock, estado) VALUES
--- Alimentos Orgánicos (Categoría 4)
-(4, 1, 'Quinua Orgánica PowerGreen', 'Quinua real orgánica de alta calidad', 8.50, 12.99, 150, 'disponible'),
-(4, 5, 'Mix Frutos del Bosque', 'Mezcla de frutos rojos liofilizados', 6.20, 9.99, 200, 'disponible'),
-(4, 22, 'Granola Energética SuperFoods', 'Granola con superalimentos y miel', 5.80, 8.99, 180, 'disponible'),
 
--- Aromaterapia (Categoría 7)
-(7, 17, 'Aceite Esencial de Lavanda', 'Aceite puro para relajación', 7.50, 14.99, 120, 'disponible'),
-(7, 26, 'Difusor AromaTerapia', 'Difusor ultrasónico para aceites', 12.00, 24.99, 80, 'disponible'),
-(7, 28, 'Esencia Floral de Manzanilla', 'Para calmar y equilibrar', 6.80, 12.50, 90, 'disponible'),
+-- Cosmética Natural (Categoría 1) - Línea: Cosmética Pura Natural
+(1, 24, 'Crema Facial Hidratante', 'Crema con ingredientes 100% naturales para la hidratación profunda de la piel', 9.50, 18.99, 110, 'disponible'),
+(1, 24, 'Jabón de Arcilla Verde', 'Jabón purificante para piel grasa', 3.20, 6.99, 200, 'disponible'),
+(1, 24, 'Desodorante Natural', 'Libre de aluminio y parabenos, para una protección natural', 4.50, 9.99, 150, 'disponible'),
 
--- Cosmética Natural (Categoría 3)
-(3, 24, 'Crema Facial Hidratante', 'Crema con ingredientes 100% naturales', 9.50, 18.99, 110, 'disponible'),
-(3, 24, 'Jabón de Arcilla Verde', 'Jabón purificante para piel grasa', 3.20, 6.99, 200, 'disponible'),
-(3, 24, 'Desodorante Natural', 'Libre de aluminio y parabenos', 4.50, 9.99, 150, 'disponible'),
+-- Cuidado de la Piel (Categoría 2) - Línea: NutriVida Belleza Integral
+(2, 10, 'Aceite de Rosa Mosqueta', 'Aceite regenerador celular natural para la piel', 10.50, 19.99, 90, 'disponible'),
+(2, 10, 'Bálsamo de Caléndula', 'Para pieles sensibles y quemaduras, efecto calmante', 8.20, 15.99, 110, 'disponible'),
+(2, 10, 'Exfoliante de Café', 'Renovador celular con cafeína para eliminar células muertas', 6.80, 12.99, 130, 'disponible'),
 
--- Cuidado Capilar Natural (Categoría 11)
-(11, 24, 'Shampoo de Aloe Vera', 'Para cabello reseco y maltratado', 5.80, 11.99, 130, 'disponible'),
-(11, 24, 'Acondicionador de Karité', 'Nutrición intensiva para el cabello', 6.20, 12.99, 120, 'disponible'),
-(11, 24, 'Mascarilla Capilar de Aguacate', 'Tratamiento reconstructivo', 7.50, 15.99, 100, 'disponible'),
+-- Cuidado Capilar Natural (Categoría 3) - Línea: SuperSemillas Belleza Nutritiva
+(3, 3, 'Shampoo de Aloe Vera', 'Shampoo natural para cabello seco y dañado', 5.80, 11.99, 130, 'disponible'),
+(3, 3, 'Acondicionador de Karité', 'Acondicionador nutritivo para cabellos resecos', 6.20, 12.99, 120, 'disponible'),
+(3, 3, 'Mascarilla Capilar de Aguacate', 'Tratamiento intensivo para la restauración del cabello', 7.50, 15.99, 100, 'disponible'),
 
--- Cuidado de la Piel (Categoría 14)
-(14, 24, 'Aceite de Rosa Mosqueta', 'Regenerador celular natural', 10.50, 19.99, 90, 'disponible'),
-(14, 24, 'Bálsamo de Caléndula', 'Para pieles irritadas y sensibles', 8.20, 15.99, 110, 'disponible'),
-(14, 24, 'Exfoliante de Café', 'Renovador celular con cafeína', 6.80, 12.99, 130, 'disponible'),
+-- Aromaterapia (Categoría 4) - Línea: Aceites Esenciales y Aromaterapia
+(4, 17, 'Aceite Esencial de Lavanda', 'Aceite puro para relajación y bienestar emocional', 7.50, 14.99, 120, 'disponible'),
+(4, 17, 'Difusor AromaTerapia', 'Difusor ultrasónico para esparcir aceites esenciales en el hogar', 12.00, 24.99, 80, 'disponible'),
+(4, 17, 'Esencia Floral de Manzanilla', 'Esencia calmante para el equilibrio emocional y físico', 6.80, 12.50, 90, 'disponible'),
 
--- Cuidado Digestivo (Categoría 8)
-(8, 20, 'Té Digestivo de Hierbas', 'Mezcla de hierbas digestivas', 4.50, 8.99, 160, 'disponible'),
-(8, 16, 'Jarabe de Alcachofa', 'Para mejorar la digestión', 7.20, 13.99, 100, 'disponible'),
-(8, 21, 'Raíz de Jengibre Orgánico', 'Para náuseas y digestión lenta', 5.80, 10.99, 140, 'disponible'),
+-- Productos Varoniales (Categoría 5) - Línea: PowerGreen Cosméticos Orgánicos
+(5, 1, 'Crema Antiarrugas Masculina', 'Crema nutritiva para hombres con propiedades antiedad', 11.50, 21.99, 120, 'disponible'),
+(5, 1, 'Gel de Afeitado Natural', 'Gel suave con ingredientes naturales para un afeitado perfecto', 7.20, 14.99, 150, 'disponible'),
+(5, 1, 'Bálsamo para Barba', 'Bálsamo hidratante para el cuidado de la barba', 8.00, 15.50, 140, 'disponible'),
 
--- Hogar Ecológico (Categoría 15)
-(15, 24, 'Detergente Ecológico', 'Limpieza sin químicos agresivos', 6.50, 12.99, 150, 'disponible'),
-(15, 24, 'Suavizante de Ropa Natural', 'Aroma natural de lavanda', 5.20, 9.99, 170, 'disponible'),
-(15, 24, 'Limpiador Multiusos', 'Para todas las superficies del hogar', 4.80, 8.99, 190, 'disponible'),
+-- Maquillaje Natural (Categoría 6) - Línea: Vegano Delights Cosméticos Gourmet
+(6, 12, 'Base Mineral Natural', 'Base de maquillaje ligera con ingredientes 100% naturales', 8.50, 16.99, 100, 'disponible'),
+(6, 12, 'Corrector Natural', 'Corrector de imperfecciones con ingredientes naturales', 6.80, 13.99, 120, 'disponible'),
+(6, 12, 'Rubor Orgánico', 'Rubor en polvo hecho con minerales naturales', 7.20, 14.50, 150, 'disponible'),
 
--- Infusiones y Tés (Categoría 12)
-(12, 18, 'Té Verde Matcha', 'Antioxidante natural premium', 9.50, 17.99, 110, 'disponible'),
-(12, 18, 'Infusión Relajante', 'Mezcla de hierbas para dormir', 5.20, 9.99, 180, 'disponible'),
-(12, 18, 'Té Rojo Pu-Erh', 'Para metabolismo y digestión', 7.80, 14.99, 130, 'disponible'),
+-- Cuidado de Manos y Uñas (Categoría 7) - Línea: Dulce Natural, Cuidado de la Piel
+(7, 9, 'Crema Hidratante para Manos', 'Crema hidratante para manos con ingredientes naturales', 5.20, 10.99, 130, 'disponible'),
+(7, 9, 'Aceite de Uñas', 'Aceite fortalecedor para uñas y cutículas', 6.50, 12.99, 110, 'disponible'),
+(7, 9, 'Esmalte Natural', 'Esmalte libre de tóxicos, para una manicura saludable', 4.50, 9.99, 150, 'disponible'),
 
--- Nutrición Deportiva (Categoría 9)
-(9, 7, 'Proteína de Guisante', 'Proteína vegetal para deportistas', 12.50, 24.99, 90, 'disponible'),
-(9, 7, 'Barrita Energética', 'Snack saludable pre-entreno', 2.80, 5.99, 200, 'disponible'),
-(9, 7, 'BCAA Vegano', 'Aminoácidos esenciales', 15.20, 29.99, 70, 'disponible'),
+-- Productos para Acné (Categoría 8) - Línea: Herbolaria y Productos de Belleza
+(8, 20, 'Gel de Té Verde', 'Gel purificante para piel con acné', 5.00, 10.99, 140, 'disponible'),
+(8, 20, 'Crema Antiacné Natural', 'Crema natural con ingredientes antiinflamatorios', 7.20, 14.99, 130, 'disponible'),
+(8, 20, 'Mascarilla de Arcilla', 'Mascarilla purificante para piel propensa al acné', 6.80, 12.50, 110, 'disponible'),
 
--- Plantas Medicinales (Categoría 2)
-(2, 16, 'Uña de Gato', 'Para sistema inmunológico', 8.50, 15.99, 120, 'disponible'),
-(2, 20, 'Sangre de Grado', 'Cicatrizante natural', 7.20, 13.99, 100, 'disponible'),
-(2, 16, 'Maca en Polvo', 'Energizante y regulador hormonal', 9.80, 18.99, 110, 'disponible'),
+-- Cuidado Corporal (Categoría 9) - Línea: BioSalud Línea de Belleza
+(9, 6, 'Exfoliante Corporal de Sal', 'Exfoliación natural para la piel seca', 8.50, 16.99, 120, 'disponible'),
+(9, 6, 'Loción Corporal Hidratante', 'Loción nutritiva para todo tipo de piel', 6.20, 12.50, 150, 'disponible'),
+(9, 6, 'Aceite Corporal de Almendras', 'Aceite hidratante para la piel con aceite de almendras', 9.00, 17.99, 140, 'disponible'),
 
--- Productos Apícolas (Categoría 13)
-(13, 30, 'Miel de Abeja Pura', 'Miel cruda sin procesar', 7.50, 14.99, 140, 'disponible'),
-(13, 30, 'Propóleo en Spray', 'Para garganta y defensas', 9.20, 17.99, 100, 'disponible'),
-(13, 30, 'Jalea Real Fresca', 'Energía y vitalidad', 12.80, 24.99, 80, 'disponible'),
+-- Higiene Bucal Natural (Categoría 10) - Línea: Hierbas Medicinales y Belleza Andina
+(10, 16, 'Pasta Dental Natural', 'Pasta dental con ingredientes naturales para una higiene bucal saludable', 4.50, 8.99, 160, 'disponible'),
+(10, 16, 'Enjuague Bucal Natural', 'Enjuague bucal refrescante sin químicos', 5.20, 9.99, 150, 'disponible'),
+(10, 16, 'Cepillo de Dientes de Bambú', 'Cepillo de dientes ecológico y sostenible', 3.50, 7.99, 200, 'disponible'),
 
--- Productos Sin Gluten (Categoría 6)
-(6, 14, 'Pan Integral Sin Gluten', 'Hecho con harina de arroz y quinoa', 4.50, 8.99, 160, 'disponible'),
-(6, 14, 'Galletas de Avena Sin Gluten', 'Snack saludable sin gluten', 3.20, 6.99, 200, 'disponible'),
-(6, 14, 'Harina Multiusos Sin Gluten', 'Mezcla para hornear', 5.80, 10.99, 150, 'disponible'),
+-- Protección Solar Natural (Categoría 11) - Línea: EcoVerde Cosmética Orgánica
+(11, 19, 'Protector Solar SPF 30', 'Protección solar natural con ingredientes orgánicos', 8.50, 16.99, 120, 'disponible'),
+(11, 19, 'Protector Solar SPF 50', 'Protección solar natural de alta resistencia', 10.00, 19.99, 100, 'disponible'),
+(11, 19, 'After Sun Natural', 'Gel refrescante post-sol con aloe vera y manzanilla', 7.20, 14.99, 130, 'disponible'),
 
--- Productos Veganos (Categoría 10)
-(10, 12, 'Queso Vegano de Anacardos', 'Alternativa cremosa sin lácteos', 6.50, 12.99, 120, 'disponible'),
-(10, 12, 'Hamburguesa de Lentejas', 'Alta en proteína vegetal', 4.20, 7.99, 180, 'disponible'),
-(10, 12, 'Leche de Almendras', 'Bebida vegetal fortificada', 3.80, 6.99, 200, 'disponible'),
+-- Cuidado Labial (Categoría 12) - Línea: Mieles del Valle Naturales para Cuidado Facial
+(12, 30, 'Bálsamo Labial Hidratante', 'Bálsamo labial con ingredientes naturales para hidratación', 3.50, 7.99, 180, 'disponible'),
+(12, 30, 'Labial Natural', 'Labial hidratante de color con ingredientes naturales', 6.80, 12.50, 150, 'disponible'),
+(12, 30, 'Exfoliante Labial', 'Exfoliante natural para labios suaves', 4.20, 8.99, 200, 'disponible'),
 
--- Superalimentos (Categoría 5)
-(5, 8, 'Camu Camu en Polvo', 'Alto contenido de vitamina C', 10.50, 19.99, 100, 'disponible'),
-(5, 8, 'Semillas de Chía', 'Fuente de omega-3 vegetal', 5.20, 9.99, 190, 'disponible'),
-(5, 8, 'Polen de Abeja', 'Energía y nutrientes concentrados', 8.80, 16.99, 130, 'disponible'),
+-- Cuidado de los Ojos (Categoría 13) - Línea: Quinua Real Cosmética Premium
+(13, 2, 'Crema para Contorno de Ojos', 'Crema hidratante para reducir las ojeras y líneas finas', 9.00, 17.99, 100, 'disponible'),
+(13, 2, 'Gel Refrescante para Ojos', 'Gel refrescante para aliviar la fatiga ocular', 7.20, 14.50, 120, 'disponible'),
+(13, 2, 'Parche Hidratante para Ojos', 'Parche hidratante para el contorno de ojos', 8.00, 15.99, 130, 'disponible'),
 
--- Suplementos Nutricionales (Categoría 1)
-(1, 4, 'Multivitamínico Completo', 'Para energía y bienestar general', 12.50, 24.99, 110, 'disponible'),
-(1, 6, 'Vitamina D3 + K2', 'Para huesos y sistema inmunológico', 9.20, 17.99, 100, 'disponible'),
-(1, 4, 'Magnesio Quelado', 'Para relajación muscular', 7.80, 14.99, 140, 'disponible');
+-- Infusiones y Tónicos (Categoría 14) - Línea: Té & Bienestar para Cuidado Facial
+(14, 18, 'Tónico Facial de Rosa Mosqueta', 'Tónico hidratante y regenerador para la piel', 6.50, 12.99, 140, 'disponible'),
+(14, 18, 'Infusión Calmante de Manzanilla', 'Infusión relajante para calmar el cuerpo y la mente', 4.80, 9.99, 160, 'disponible'),
+(14, 18, 'Spray Refrescante de Pepino', 'Spray refrescante para todo el día', 5.20, 10.99, 150, 'disponible'),
+
+-- Productos de Aromaterapia (Categoría 15) - Línea: AromaTerapia y Bienestar Facial
+(15, 26, 'Aceite Esencial de Menta', 'Aceite esencial refrescante para la mente y cuerpo', 7.00, 14.50, 110, 'disponible'),
+(15, 26, 'Difusor Aromaterapia Ultrasonico', 'Difusor para aceites esenciales de alta calidad', 13.50, 27.99, 90, 'disponible'),
+(15, 26, 'Aceite Esencial de Eucalipto', 'Aceite esencial para respiración profunda', 6.00, 12.99, 120, 'disponible');
 
 
 
