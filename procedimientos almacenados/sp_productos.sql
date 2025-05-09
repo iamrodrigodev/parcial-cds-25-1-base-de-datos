@@ -122,6 +122,28 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
+CREATE PROCEDURE IF NOT EXISTS ObtenerTodosLosProductosDisponibles()
+BEGIN
+    DECLARE v_productos_count INT;
+
+    -- Verificar si hay productos disponibles
+    SELECT COUNT(*) INTO v_productos_count
+    FROM Productos
+    WHERE estado = 'disponible';
+
+    -- Si no hay productos disponibles, lanzar un error
+    IF v_productos_count = 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No hay productos disponibles';
+    END IF;
+
+    -- Seleccionar productos cuyo estado sea "disponible"
+    SELECT cod_producto, nombre, descripcion, precio_venta, stock, estado
+    FROM Productos
+    WHERE estado = 'disponible';
+END $$
+DELIMITER ;
+
+DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS ObtenerProductoPorId(
     IN p_cod_producto INT
 )
