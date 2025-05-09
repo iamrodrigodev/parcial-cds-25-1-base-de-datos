@@ -2,7 +2,7 @@ USE FabiaNatura;
 
 -- POST Roles --
 DELIMITER $$
-CREATE PROCEDURE AgregarRol(
+CREATE PROCEDURE IF NOT EXISTS AgregarRol(
     IN p_nombre_rol VARCHAR(50),
     IN p_descripcion TEXT
 )
@@ -27,7 +27,7 @@ DELIMITER ;
 
 -- GET Roles --
 DELIMITER $$
-CREATE PROCEDURE ObtenerTodosRoles()
+CREATE PROCEDURE IF NOT EXISTS ObtenerTodosRoles()
 BEGIN
     -- Verificar si existen roles en la tabla Roles
     DECLARE v_roles_count INT;
@@ -48,7 +48,7 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-CREATE PROCEDURE ObtenerRolPorId(
+CREATE PROCEDURE IF NOT EXISTS ObtenerRolPorId(
     IN p_cod_rol INT
 )
 BEGIN
@@ -72,7 +72,7 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-CREATE PROCEDURE ObtenerEmpleadosPorRol(
+CREATE PROCEDURE IF NOT EXISTS ObtenerEmpleadosPorRol(
     IN p_cod_rol INT
 )
 BEGIN
@@ -99,7 +99,7 @@ DELIMITER ;
 
 -- PUT Roles --
 DELIMITER $$
-CREATE PROCEDURE ActualizarRol(
+CREATE PROCEDURE IF NOT EXISTS ActualizarRol(
     IN p_cod_rol INT,                -- ID del rol que se desea actualizar
     IN p_nuevo_nombre_rol VARCHAR(50),  -- Nuevo nombre para el rol
     IN p_nueva_descripcion TEXT       -- Nueva descripción del rol
