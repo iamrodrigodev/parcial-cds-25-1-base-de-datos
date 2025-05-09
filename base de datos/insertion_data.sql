@@ -314,26 +314,26 @@ INSERT INTO Direcciones_Personas (dni, direccion) VALUES
 
 
 INSERT INTO Empleados (dni, estado, contraseña, es_administrador) VALUES
-('70649355', 'activo', 'A1b2C3d4E5f6', FALSE),
-('83018047', 'activo', 'B2c3D4e5F6g7', FALSE),
-('86927207', 'activo', 'C3d4E5f6G7h8', FALSE),
-('88389797', 'activo', 'D4e5F6g7H8i9', FALSE),
-('90162061', 'activo', 'E5f6G7h8I9j0', FALSE),
-('97436487', 'activo', 'F6g7H8i9J0k1', FALSE),
-('97631613', 'activo', 'G7h8I9j0K1l2', FALSE),
-('99666333', 'activo', 'H8i9J0k1L2m3', TRUE),
-('33777255', 'activo', 'I9j0K1l2M3n4', FALSE),
-('35155937', 'activo', 'J0k1L2m3N4o5', FALSE),
-('35255109', 'activo', 'K1l2M3n4O5p6', FALSE),
-('51346787', 'activo', 'L2m3N4o5P6q7', FALSE),
-('53964100', 'activo', 'M3n4O5p6Q7r8', FALSE),
-('54167291', 'activo', 'N4o5P6q7R8s9', FALSE),
-('54389505', 'activo', 'O5p6Q7r8S9t0', FALSE),
-('55614722', 'activo', 'P6q7R8s9T0u1', FALSE),
-('77684243', 'activo', 'Q7r8S9t0U1v2', FALSE),
-('77692820', 'activo', 'R8s9T0u1V2w3', FALSE),
-('78043843', 'activo', 'S9t0U1v2W3x4', TRUE),
-('78451265', 'activo', 'T0u1V2w3X4y5', FALSE);
+('70649355', 'activo', 'ABC1', FALSE),
+('83018047', 'activo', 'ABC2', FALSE),
+('86927207', 'activo', 'ABC3', FALSE),
+('88389797', 'activo', 'ABC4', FALSE),
+('90162061', 'activo', 'ABC5', FALSE),
+('97436487', 'activo', 'ABC6', FALSE),
+('97631613', 'activo', 'ABC7', FALSE),
+('99666333', 'activo', 'ABC8', TRUE),
+('33777255', 'activo', 'ABC9', FALSE),
+('35155937', 'activo', 'ABC10', FALSE),
+('35255109', 'activo', 'ABC11', FALSE),
+('51346787', 'activo', 'ABC12', FALSE),
+('53964100', 'activo', 'ABC13', FALSE),
+('54167291', 'activo', 'ABC14', FALSE),
+('54389505', 'activo', 'ABC15', FALSE),
+('55614722', 'activo', 'ABC16', FALSE),
+('77684243', 'activo', 'ABC17', FALSE),
+('77692820', 'activo', 'ABC18', FALSE),
+('78043843', 'activo', 'ABC19', TRUE),
+('78451265', 'activo', 'ABC20', FALSE);
 
 
 
