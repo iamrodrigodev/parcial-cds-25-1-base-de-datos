@@ -2,7 +2,7 @@ USE FabiaNatura;
 
 -- POST Clientes --
 DELIMITER $$
-CREATE PROCEDURE AgregarCliente(
+CREATE PROCEDURE IF NOT EXISTS AgregarCliente(
     IN p_dni CHAR(8),
     IN p_nombre VARCHAR(50),
     IN p_apellido_paterno VARCHAR(50),
@@ -35,7 +35,7 @@ DELIMITER ;
 
 -- GET Clientes --
 DELIMITER $$
-CREATE PROCEDURE ObtenerTodosLosClientes()
+CREATE PROCEDURE IF NOT EXISTS ObtenerTodosLosClientes()
 BEGIN
     DECLARE v_cliente_count INT;
 
@@ -62,7 +62,7 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-CREATE PROCEDURE ObtenerClientePorDni(
+CREATE PROCEDURE IF NOT EXISTS ObtenerClientePorDni(
     IN p_dni CHAR(8)
 )
 BEGIN
@@ -93,7 +93,7 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-CREATE PROCEDURE ObtenerProductosCompradosPorCliente(
+CREATE PROCEDURE IF NOT EXISTS ObtenerProductosCompradosPorCliente(
     IN p_dni CHAR(8)
 )
 BEGIN
