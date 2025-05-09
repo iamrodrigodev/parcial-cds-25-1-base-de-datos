@@ -348,13 +348,13 @@ CREATE PROCEDURE IF NOT EXISTS ActualizarStockProducto(
     IN p_nuevo_stock INT 
 )
 BEGIN
+    -- Verificar si el producto con el cod_producto existe
+    DECLARE v_producto_count INT;
+    
     -- Validar que el nuevo stock no sea negativo
     IF p_nuevo_stock < 0 THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El stock no puede ser negativo';
     END IF;
-
-    -- Verificar si el producto con el cod_producto existe
-    DECLARE v_producto_count INT;
 
     SELECT COUNT(*) INTO v_producto_count
     FROM Productos
