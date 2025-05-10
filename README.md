@@ -13,7 +13,13 @@ La base de datos almacena información clave sobre entidades y relaciones import
 ## Diagrama de la Base de Datos
 A continuación se muestra el diagrama relacional de la base de datos. Si tienes el archivo `fabia-natura.png` en la raíz del proyecto, el diagrama se visualizará automáticamente:
 
-<img src="diagramas/fabia-natura.png" alt="Diagrama de la base de datos" width="700" style="display:block;margin:auto;"/>
+<table>
+  <tr>
+    <td align="center">
+      <img src="diagramas/fabia-natura.png" alt="Diagrama de la base de datos" width="700"/>
+    </td>
+  </tr>
+</table>
 
 ## Cómo visualizar el diagrama
 1. Asegúrate de tener el archivo `fabia-natura.png` dentro de la carpeta `diagramas` en el proyecto.
