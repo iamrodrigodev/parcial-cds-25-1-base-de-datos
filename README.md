@@ -11,14 +11,14 @@ La base de datos almacena información clave sobre entidades y relaciones import
 - **Transacciones**: Registra las operaciones o eventos importantes entre usuarios y productos.
 
 ## Diagrama de la Base de Datos
-A continuación se muestra el diagrama relacional de la base de datos. Si tienes el archivo `fabia-natura.svg` en la raíz del proyecto, el diagrama se visualizará automáticamente:
+A continuación se muestra el diagrama relacional de la base de datos. Si tienes el archivo `fabia-natura.png` en la raíz del proyecto, el diagrama se visualizará automáticamente:
 
 <center>
-  <img src="diagramas/fabia-natura.svg" alt="Diagrama de la base de datos" width="700"/>
+  <img src="diagramas/fabia-natura.png" alt="Diagrama de la base de datos" width="700"/>
 </center>
 
 ## Cómo visualizar el diagrama
-1. Asegúrate de tener el archivo `fabia-natura.svg` dentro de la carpeta `diagramas` en el proyecto.
+1. Asegúrate de tener el archivo `fabia-natura.png` dentro de la carpeta `diagramas` en el proyecto.
 2. Abre este archivo `README.md` en un visualizador de Markdown compatible o en GitHub para ver el diagrama.
 
 ---
