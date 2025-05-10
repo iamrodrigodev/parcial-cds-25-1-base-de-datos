@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS Roles (
 CREATE TABLE IF NOT EXISTS Vendedores (
     cod_vendedor INT AUTO_INCREMENT PRIMARY KEY,
     cod_empleado INT NOT NULL,
-    cod_rol INT NOT NULL,
+    cod_rol INT,
     FOREIGN KEY (cod_empleado) REFERENCES Empleados(cod_empleado) ON UPDATE CASCADE,
     FOREIGN KEY (cod_rol) REFERENCES Roles(cod_rol) ON UPDATE CASCADE
 );
