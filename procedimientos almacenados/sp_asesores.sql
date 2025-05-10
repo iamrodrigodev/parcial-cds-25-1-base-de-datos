@@ -126,7 +126,7 @@ DELIMITER ;
 
 -- PUT Asesores --
 DELIMITER $$
-CREATE PROCEDURE ActualizarAsesor(
+CREATE PROCEDURE IF NOT EXISTS ActualizarAsesor(
     IN p_cod_asesor INT,        
     IN p_dni CHAR(8),            
     IN p_nombre VARCHAR(50),   
