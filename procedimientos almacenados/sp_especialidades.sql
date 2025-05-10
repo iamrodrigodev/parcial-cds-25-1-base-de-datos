@@ -3,8 +3,8 @@ USE FabiaNatura;
 -- POST Especialidades --
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS AgregarEspecialidad(
-    IN p_nombre_especialidad VARCHAR(100),  -- Nombre de la especialidad
-    IN p_descripcion TEXT  -- Descripción de la especialidad
+    IN p_nombre_especialidad VARCHAR(100),
+    IN p_descripcion TEXT
 )
 BEGIN
     DECLARE v_existente INT;
@@ -50,13 +50,36 @@ BEGIN
 END $$
 DELIMITER ;
 
+DELIMITER $$
+CREATE PROCEDURE IF NOT EXISTS ObtenerEspecialidadPorCod(
+    IN p_cod_especialidad INT
+)
+BEGIN
+    DECLARE v_especialidad_count INT;
+
+    -- Verificar si la especialidad con el código proporcionado existe
+    SELECT COUNT(*) INTO v_especialidad_count
+    FROM Especialidades
+    WHERE cod_especialidad = p_cod_especialidad;
+
+    -- Si no existe la especialidad, lanzar un error
+    IF v_especialidad_count = 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se encontró una especialidad con ese código';
+    END IF;
+
+    -- Obtener los detalles de la especialidad
+    SELECT cod_especialidad, nombre_especialidad, descripcion, fecha_registro
+    FROM Especialidades
+    WHERE cod_especialidad = p_cod_especialidad; 
+END $$
+DELIMITER ;
 
 -- PUT Especialidades --
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS ActualizarEspecialidad(
-    IN p_cod_especialidad INT,  -- Código de la especialidad a actualizar
-    IN p_nuevo_nombre VARCHAR(100),  -- Nuevo nombre de la especialidad
-    IN p_nueva_descripcion TEXT  -- Nueva descripción de la especialidad
+    IN p_cod_especialidad INT,
+    IN p_nuevo_nombre VARCHAR(100),
+    IN p_nueva_descripcion TEXT
 )
 BEGIN
     DECLARE v_especialidad_count INT;
@@ -80,4 +103,6 @@ BEGIN
     UPDATE Especialidades
     SET nombre_especialidad = p_nuevo_nombre, descripcion = p_nueva_descripcion
     WHERE cod_especialidad = p_cod_especialidad;
+    
+END $$
 DELIMITER ;
