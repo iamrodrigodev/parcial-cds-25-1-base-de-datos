@@ -2,7 +2,7 @@ USE FabiaNatura;
 
 -- POST Asesores --
 DELIMITER $$
-CREATE PROCEDURE AgregarAsesor(
+CREATE PROCEDURE IF NOT EXISTS AgregarAsesor(
     IN p_dni CHAR(8),    
     IN p_nombre VARCHAR(50), 
     IN p_apellido_paterno VARCHAR(50),  
