@@ -15,10 +15,6 @@ A continuación se muestra el diagrama relacional de la base de datos. Si tienes
 
 <img src="diagramas/fabia-natura.png" alt="Diagrama de la base de datos" width="700" style="display:block;margin:auto;"/>
 
-## Cómo visualizar el diagrama
-1. Asegúrate de tener el archivo `fabia-natura.png` dentro de la carpeta `diagramas` en el proyecto.
-2. Abre este archivo `README.md` en un visualizador de Markdown compatible o en GitHub para ver el diagrama.
-
 ---
 
 ## Tablas de la Base de Datos
