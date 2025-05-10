@@ -3,112 +3,81 @@ USE FabiaNatura;
 -- POST Especialidades --
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS AgregarEspecialidad(
-    IN p_nombre VARCHAR(50)
+    IN p_nombre_especialidad VARCHAR(100),  -- Nombre de la especialidad
+    IN p_descripcion TEXT  -- Descripción de la especialidad
 )
 BEGIN
-    -- Validar que el nombre no esté vacío ni sea NULL
-    IF p_nombre IS NULL OR p_nombre = '' THEN
+    DECLARE v_existente INT;
+
+    -- Validar que el nombre de la especialidad no sea nulo ni vacío
+    IF p_nombre_especialidad IS NULL OR TRIM(p_nombre_especialidad) = '' THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El nombre de la especialidad no puede estar vacío';
     END IF;
 
-    -- Validar que no exista ya la especialidad
-    IF EXISTS (
-        SELECT 1 FROM Especialidades 
-        WHERE nombre = p_nombre
-    ) THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La especialidad ya existe';
+    -- Verificar si ya existe una especialidad con el mismo nombre
+    SELECT COUNT(*) INTO v_existente
+    FROM Especialidades
+    WHERE nombre_especialidad = p_nombre_especialidad;
+
+    IF v_existente > 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Ya existe una especialidad con ese nombre';
     END IF;
 
     -- Insertar la nueva especialidad
-    INSERT INTO Especialidades (nombre)
-    VALUES (p_nombre);
+    INSERT INTO Especialidades (nombre_especialidad, descripcion)
+    VALUES (p_nombre_especialidad, p_descripcion);
 END $$
 DELIMITER ;
 
 -- GET Especialidades --
 DELIMITER $$
-CREATE PROCEDURE IF NOT EXISTS ObtenerEspecialidades()
+CREATE PROCEDURE IF NOT EXISTS ObtenerTodasLasEspecialidades()
 BEGIN
-    -- Verificar si hay especialidades registradas
-    DECLARE v_especialidades_count INT;
-    
-    SELECT COUNT(*) INTO v_especialidades_count
+    DECLARE v_especialidad_count INT;
+
+    -- Verificar si existen especialidades en la base de datos
+    SELECT COUNT(*) INTO v_especialidad_count
     FROM Especialidades;
 
     -- Si no hay especialidades, lanzar un error
-    IF v_especialidades_count = 0 THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se encontraron especialidades registradas';
+    IF v_especialidad_count = 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No hay especialidades registradas';
     END IF;
 
     -- Obtener todas las especialidades
-    SELECT id_especialidad, nombre
-    FROM Especialidades
-    ORDER BY nombre;
+    SELECT cod_especialidad, nombre_especialidad, descripcion, fecha_registro
+    FROM Especialidades;
 END $$
 DELIMITER ;
 
--- GET Especialidad por ID --
-DELIMITER $$
-CREATE PROCEDURE IF NOT EXISTS ObtenerEspecialidadPorId(
-    IN p_id_especialidad INT
-)
-BEGIN
-    -- Validar que el ID no sea NULL o negativo
-    IF p_id_especialidad IS NULL OR p_id_especialidad <= 0 THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El ID de especialidad no es válido';
-    END IF;
-
-    -- Verificar si la especialidad existe
-    IF NOT EXISTS (
-        SELECT 1 FROM Especialidades 
-        WHERE id_especialidad = p_id_especialidad
-    ) THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se encontró la especialidad especificada';
-    END IF;
-
-    -- Obtener la especialidad
-    SELECT id_especialidad, nombre
-    FROM Especialidades
-    WHERE id_especialidad = p_id_especialidad;
-END $$
-DELIMITER ;
 
 -- PUT Especialidades --
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS ActualizarEspecialidad(
-    IN p_id_especialidad INT,
-    IN p_nombre_nuevo VARCHAR(50)
+    IN p_cod_especialidad INT,  -- Código de la especialidad a actualizar
+    IN p_nuevo_nombre VARCHAR(100),  -- Nuevo nombre de la especialidad
+    IN p_nueva_descripcion TEXT  -- Nueva descripción de la especialidad
 )
 BEGIN
-    -- Validar que el ID no sea NULL o negativo
-    IF p_id_especialidad IS NULL OR p_id_especialidad <= 0 THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El ID de especialidad no es válido';
+    DECLARE v_especialidad_count INT;
+
+    -- Verificar si la especialidad con el código proporcionado existe
+    SELECT COUNT(*) INTO v_especialidad_count
+    FROM Especialidades
+    WHERE cod_especialidad = p_cod_especialidad;
+
+    -- Si no existe la especialidad, lanzar un error
+    IF v_especialidad_count = 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se encontró la especialidad con ese código';
     END IF;
 
-    -- Validar que el nombre nuevo no esté vacío ni sea NULL
-    IF p_nombre_nuevo IS NULL OR p_nombre_nuevo = '' THEN
+    -- Validar que el nuevo nombre no sea nulo ni vacío
+    IF p_nuevo_nombre IS NULL OR TRIM(p_nuevo_nombre) = '' THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El nombre de la especialidad no puede estar vacío';
     END IF;
 
-    -- Verificar si la especialidad existe
-    IF NOT EXISTS (
-        SELECT 1 FROM Especialidades 
-        WHERE id_especialidad = p_id_especialidad
-    ) THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No se encontró la especialidad a actualizar';
-    END IF;
-
-    -- Verificar que el nuevo nombre no exista ya
-    IF EXISTS (
-        SELECT 1 FROM Especialidades 
-        WHERE nombre = p_nombre_nuevo AND id_especialidad != p_id_especialidad
-    ) THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Ya existe otra especialidad con este nombre';
-    END IF;
-
-    -- Actualizar la especialidad
+    -- Actualizar la especialidad con los nuevos valores
     UPDATE Especialidades
-    SET nombre = p_nombre_nuevo
-    WHERE id_especialidad = p_id_especialidad;
-END $$
+    SET nombre_especialidad = p_nuevo_nombre, descripcion = p_nueva_descripcion
+    WHERE cod_especialidad = p_cod_especialidad;
 DELIMITER ;
