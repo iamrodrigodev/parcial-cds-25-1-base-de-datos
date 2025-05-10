@@ -1,5 +1,24 @@
 USE FabiaNatura;
 
+DELIMITER $$
+CREATE PROCEDURE IF NOT EXISTS VerificarPersonaPorDni(
+    IN p_dni CHAR(8)
+)
+BEGIN
+    DECLARE v_persona_count INT;
+
+    SELECT COUNT(*) INTO v_persona_count
+    FROM Personas
+    WHERE dni = p_dni;
+
+    IF v_persona_count > 0 THEN
+        SELECT 1 AS existe;
+    ELSE
+        SELECT 0 AS existe;
+    END IF;
+END $$
+DELIMITER ;
+
 -- POST Clientes --
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS AgregarCliente(
@@ -17,11 +36,6 @@ BEGIN
     SELECT COUNT(*) INTO v_persona_count
     FROM Personas
     WHERE dni = p_dni;
-
-    -- Si la persona ya existe, lanzar un error
-    IF v_persona_count > 0 THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La persona con ese DNI ya existe';
-    END IF;
 
     -- Insertar la persona en la tabla Personas
     INSERT INTO Personas (dni, nombre, apellido_paterno, apellido_materno, fecha_nacimiento)
