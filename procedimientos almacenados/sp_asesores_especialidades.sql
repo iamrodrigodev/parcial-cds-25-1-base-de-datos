@@ -2,7 +2,7 @@ USE FabiaNatura;
 
 -- POST Asesores_Especialidades --
 DELIMITER $$
-CREATE PROCEDURE AgregarEspecialidadAAsesor(
+CREATE PROCEDURE IF NOT EXISTS AgregarEspecialidadAAsesor(
     IN p_cod_asesor INT,         -- Código del asesor
     IN p_cod_especialidad INT    -- Código de la especialidad
 )
@@ -50,7 +50,7 @@ DELIMITER ;
 
 -- GET Asesores_Especialidades --
 DELIMITER $$
-CREATE PROCEDURE ObtenerEspecialidadesDeAsesor(
+CREATE PROCEDURE IF NOT EXISTS ObtenerEspecialidadesDeAsesor(
     IN p_cod_asesor INT  -- Código del asesor
 )
 BEGIN
