@@ -60,13 +60,6 @@ DELIMITER ;
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS ObtenerTodosLosProductos()
 BEGIN
-    DECLARE v_productos_count INT;
-    SELECT COUNT(*) INTO v_productos_count
-    FROM Productos
-    WHERE estado = 'disponible';
-    IF v_productos_count = 0 THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No hay productos';
-    END IF;
     SELECT 
         p.cod_producto,
         p.nombre,
@@ -88,13 +81,6 @@ DELIMITER ;
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS ObtenerTodosLosProductosNoDisponibles()
 BEGIN
-    DECLARE v_productos_count INT;
-    SELECT COUNT(*) INTO v_productos_count
-    FROM Productos
-    WHERE estado = 'agotado';
-    IF v_productos_count = 0 THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No hay productos';
-    END IF;
     SELECT 
         p.cod_producto,
         p.nombre,
