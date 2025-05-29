@@ -76,7 +76,8 @@ BEGIN
         p.stock,
         p.estado,
         c.nombre AS categoria,
-        l.nombre_linea AS linea
+        l.nombre_linea AS linea,
+        p.fecha_registro
     FROM Productos p
     LEFT JOIN Categorias c ON p.cod_categoria = c.cod_categoria
     LEFT JOIN Lineas l ON p.cod_linea = l.cod_linea
@@ -103,7 +104,8 @@ BEGIN
         p.stock,
         p.estado,
         c.nombre AS categoria,
-        l.nombre_linea AS linea
+        l.nombre_linea AS linea,
+        p.fecha_registro
     FROM Productos p
     LEFT JOIN Categorias c ON p.cod_categoria = c.cod_categoria
     LEFT JOIN Lineas l ON p.cod_linea = l.cod_linea
@@ -128,9 +130,9 @@ BEGIN
         p.precio_venta,
         p.stock,
         p.estado,
-        p.fecha_registro,
         c.nombre AS nombre_categoria,
-        l.nombre_linea AS nombre_linea
+        l.nombre_linea AS nombre_linea,
+        p.fecha_registro
     FROM 
         Productos p
     LEFT JOIN Categorias c ON p.cod_categoria = c.cod_categoria
